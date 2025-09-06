@@ -325,6 +325,20 @@
             margin-top: 2rem;
         }
 
+        .event-card-container {
+            display: flex;
+            /* arrange children in a row */
+            flex-wrap: nowrap;
+            /* prevent wrapping to the next line */
+            gap: 1rem;
+            /* optional spacing between cards */
+            justify-content: flex-start;
+            /* align to left, change to center if needed */
+            overflow-x: auto;
+            /* allow horizontal scrolling if the cards exceed screen width */
+            padding: 1rem;
+        }
+
         .event-card {
             position: relative;
             display: flex;
@@ -415,6 +429,7 @@
             margin-right: 8px;
         }
 
+        /* Default styling for larger screens */
         .experience-date {
             position: absolute;
             top: 20px;
@@ -422,6 +437,32 @@
             font-weight: bold;
             color: #666;
         }
+
+        /* Responsive styling for mobile screens */
+        @media (max-width: 600px) {
+            .experience-date {
+                top: 10px;
+                /* bring it slightly lower */
+                right: 10px;
+                /* reduce distance from right */
+                font-size: 0.85rem;
+                /* smaller font */
+            }
+        }
+
+        @media (max-width: 400px) {
+            .experience-date {
+                position: relative;
+                /* stack it naturally inside the card */
+                top: auto;
+                right: auto;
+                text-align: right;
+                /* keep it aligned to the end */
+                margin-bottom: 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
 
         .experience-link {
             display: inline-block;
@@ -713,7 +754,7 @@
 
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
-            <li><a href="#career-timeline">Timeline</a></li>
+            <!-- <li><a href="#career-timeline">Timeline</a></li> -->
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -851,7 +892,7 @@
         <div class="experience-card">
             <h3>Product Management Intern</h3>
             <h4>Algozenith Technologies</h4>
-            <span class="experience-date">2024</span>
+            <span class="experience-date">May 2024 - July 2024</span>
             <p>Enhanced Algozenith’s ed-tech platform to improve user journey for 1200+ students.</p>
             <ul>
                 <li>Improved platform navigation, boosting user satisfaction by 80%.</li>
@@ -860,7 +901,7 @@
                 <li>Worked closely with developers and designers to align product goals.</li>
             </ul>
             <a href="https://drive.google.com/file/d/1FKcIsiF4hoXTOIPo7bqDw2gCek357XGi/view?usp=sharing" target="_blank"
-                class="experience-link">View Report ↗</a>
+                class="experience-link">View Certificate ↗</a>
         </div>
 
         <div class="experience-card">
@@ -905,7 +946,7 @@
                 <h3>Achieved top 1% rank in JEE 2019, among 1 million+ entrants</h3>
                 <p></p><a href="https://drive.google.com/file/d/1isCaZbipcAUr711IUBMLgsddQfQkdcD-/view?usp=sharing">View
                     Certificate</a>
-            </div>            
+            </div>
         </div>
     </section>
 
