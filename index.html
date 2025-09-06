@@ -644,19 +644,15 @@
         }
 
         project-card img {
-            width: 64px;
-            /* or 48px, 32px, depending on desired icon size */
-            height: 64px;
-            /* keep it square for circular effect */
+            width: clamp(40px, 20%, 80px);
+            /* min 40px, max 80px, scales with card */
+            height: auto;
+            /* maintain aspect ratio */
             border-radius: 50%;
             display: block;
             margin: 1rem auto;
             object-fit: cover;
-            /* fills the circle nicely */
         }
-
-
-
 
         .project-links a {
             margin-right: 1rem;
