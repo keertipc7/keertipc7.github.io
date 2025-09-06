@@ -644,15 +644,19 @@
         }
 
         project-card img {
-            width: 50%;
-            /* Adjust size to behave like an icon */
-            border-radius: 8px;
-            /* Rounded corners */
-            margin: 1rem auto;
-            /* Centers the image horizontally and adds spacing */
+            width: 30%;
+            /* Makes the image proportional to the card */
+            height: auto;
+            /* Maintains aspect ratio */
+            border-radius: 50%;
+            /* Optional: makes it circular like an icon */
             display: block;
-            /* Ensures margin auto works for centering */
+            margin: 1rem auto;
+            /* Centers it horizontally */
+            object-fit: contain;
+            /* Ensures the image fits well without stretching */
         }
+
 
 
         .project-links a {
