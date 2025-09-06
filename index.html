@@ -390,12 +390,35 @@
 
         /* Experience */
         .experience-card {
+            display: flex;
+            /* make the card a flex container */
+            align-items: flex-start;
+            /* align items at the top */
+            gap: 1rem;
+            /* space between logo and content */
             background: #fff;
             padding: 1.5rem;
             margin-bottom: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
+        }
+
+        .experience-card-logo {
+            flex-shrink: 0;
+            /* prevent logo from shrinking */
+            width: 60px;
+            /* adjust size as needed */
+            height: 60px;
+            border-radius: 10px;
+            /* optional, for rounded logos */
+            object-fit: contain;
+            /* keep logo proportion */
+        }
+
+        .experience-card-content {
+            flex: 1;
+            /* content takes the rest of the space */
         }
 
         .experience-card h3 {
@@ -428,6 +451,21 @@
             color: #f1c40f;
             margin-right: 8px;
         }
+
+        /* Responsive adjustment for mobile */
+        @media (max-width: 600px) {
+            .experience-card {
+                flex-direction: column;
+                /* stack logo above content on small screens */
+                align-items: center;
+                text-align: center;
+            }
+
+            .experience-card-logo {
+                margin-bottom: 1rem;
+            }
+        }
+
 
         /* Default styling for larger screens */
         .experience-date {
@@ -875,48 +913,57 @@
     <section id="experience">
         <h2>Professional Experience</h2>
         <div class="experience-card">
-            <h3>Software Engineer</h3>
-            <h4>Microsoft India</h4>
-            <span class="experience-date">2024 – Present</span>
-            <p>Full-time role contributing to large-scale software solutions and cloud-based systems.</p>
-            <ul>
-                <li>Developed scalable software features impacting millions of users.</li>
-                <li>Collaborated with cross-functional teams to deliver high-quality releases.</li>
-                <li>Optimized performance and reduced latency by 30% in critical workflows.</li>
-                <li>Mentored junior developers and contributed to best practices documentation.</li>
-            </ul>
-            <a href="https://drive.google.com/file/d/1Sj6GKBhGDCXT5ELoCMXsdZS1Y8oIgNQH/view?usp=sharing" target="_blank"
-                class="experience-link">View Report ↗</a>
+            <img src="images\Microsoft.png" alt="Microsoft Logo" class="experience-card-logo">
+            <div class="experience-card-content">
+                <h3>Software Engineer</h3>
+                <h4>Microsoft India</h4>
+                <span class="experience-date">July 2024 – August 2025</span>
+                <p>Full-time role contributing to large-scale software solutions and cloud-based systems.</p>
+                <ul>
+                    <li>Developed scalable software features impacting millions of users.</li>
+                    <li>Collaborated with cross-functional teams to deliver high-quality releases.</li>
+                    <li>Optimized performance and reduced latency by 30% in critical workflows.</li>
+                    <li>Mentored junior developers and contributed to best practices documentation.</li>
+                </ul>
+                <a href="https://drive.google.com/file/d/1Sj6GKBhGDCXT5ELoCMXsdZS1Y8oIgNQH/view?usp=sharing"
+                    target="_blank" class="experience-link">View Report ↗</a>
+            </div>
         </div>
 
         <div class="experience-card">
-            <h3>Product Management Intern</h3>
-            <h4>Algozenith Technologies</h4>
-            <span class="experience-date">May 2024 - July 2024</span>
-            <p>Enhanced Algozenith’s ed-tech platform to improve user journey for 1200+ students.</p>
-            <ul>
-                <li>Improved platform navigation, boosting user satisfaction by 80%.</li>
-                <li>Introduced leaderboard & question bank features increasing engagement 32%.</li>
-                <li>Reduced time-to-market by 1.5× through agile planning.</li>
-                <li>Worked closely with developers and designers to align product goals.</li>
-            </ul>
-            <a href="https://drive.google.com/file/d/1FKcIsiF4hoXTOIPo7bqDw2gCek357XGi/view?usp=sharing" target="_blank"
-                class="experience-link">View Certificate ↗</a>
+            <img src="images\algozenith.jpg" alt="Algozenith Logo" class="experience-card-logo">
+            <div class="experience-card-content">
+                <h3>Product Management Intern</h3>
+                <h4>Algozenith Technologies</h4>
+                <span class="experience-date">May 2024 - July 2024</span>
+                <p>Enhanced Algozenith’s ed-tech platform to improve user journey for 1200+ students.</p>
+                <ul>
+                    <li>Improved platform navigation, boosting user satisfaction by 80%.</li>
+                    <li>Introduced leaderboard & question bank features increasing engagement 32%.</li>
+                    <li>Reduced time-to-market by 1.5× through agile planning.</li>
+                    <li>Worked closely with developers and designers to align product goals.</li>
+                </ul>
+                <a href="https://drive.google.com/file/d/1FKcIsiF4hoXTOIPo7bqDw2gCek357XGi/view?usp=sharing"
+                    target="_blank" class="experience-link">View Certificate ↗</a>
+            </div>
         </div>
 
         <div class="experience-card">
-            <h3>Software Engineer Intern</h3>
-            <h4>Microsoft India</h4>
-            <span class="experience-date">2023</span>
-            <p>Contributed to Microsoft Sustainability Manager App by developing impactful features.</p>
-            <ul>
-                <li>Built “What-if Analysis” feature enabling greener emissions comparisons.</li>
-                <li>Automated computations reducing manual work for 500+ companies.</li>
-                <li>Created dashboards with ReactJS for better data visualization.</li>
-                <li>Improved code reliability by implementing Playwright automation tests.</li>
-            </ul>
-            <a href="https://drive.google.com/file/d/1VME2oxBb3Ah-UTPrLyXzOodvYzqWi4N3/view?usp=sharing" target="_blank"
-                class="experience-link">View Certificate ↗</a>
+            <img src="images\Microsoft.png" alt="Microsoft Logo" class="experience-card-logo">
+            <div class="experience-card-content">
+                <h3>Software Engineer Intern</h3>
+                <h4>Microsoft India</h4>
+                <span class="experience-date">May 2023 - June 2023</span>
+                <p>Contributed to Microsoft Sustainability Manager App by developing impactful features.</p>
+                <ul>
+                    <li>Built “What-if Analysis” feature enabling greener emissions comparisons.</li>
+                    <li>Automated computations reducing manual work for 500+ companies.</li>
+                    <li>Created dashboards with ReactJS for better data visualization.</li>
+                    <li>Improved code reliability by implementing Playwright automation tests.</li>
+                </ul>
+                <a href="https://drive.google.com/file/d/1VME2oxBb3Ah-UTPrLyXzOodvYzqWi4N3/view?usp=sharing"
+                    target="_blank" class="experience-link">View Certificate ↗</a>
+            </div>
         </div>
 
 
