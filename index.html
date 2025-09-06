@@ -644,14 +644,15 @@
         }
 
         project-card img {
-            width: clamp(40px, 20%, 80px);
-            /* min 40px, max 80px, scales with card */
-            height: auto;
-            /* maintain aspect ratio */
-            border-radius: 50%;
-            display: block;
-            margin: 1rem auto;
-            object-fit: cover;
+            flex-shrink: 0;
+            /* prevent logo from shrinking */
+            width: 60px;
+            /* adjust size as needed */
+            height: 60px;
+            border-radius: 10px;
+            /* optional, for rounded logos */
+            object-fit: contain;
+            /* keep logo proportion */
         }
 
         .project-links a {
@@ -1107,8 +1108,9 @@
         <h2>Featured Projects</h2>
         <div class="project-grid">
             <div class="project-card">
-                <!-- <img src="images\iitkgp.png"> -->
+                <img src="images\iitkgp.png">
                 <h3>Privacy Enhanced Conversational AI using Large Language Models</h3>
+                <p></p>
                 <h5>Thesis project guided by Prof. Hari Shankar Mahato, IIT Kharagpur <p>August 2023 – May 2024</p1>
                 </h5>
                 <p>Built a secure local LLM chatbot that ingests custom files to answer queries with 98% accuracy while
@@ -1121,10 +1123,11 @@
 
 
             <div class="project-card">
-                <!-- <img src="images\NIAS_logo.jpg"> -->
+                <img src="images\NIAS_logo.jpg">
                 <h3>Learning Generalized Causal Structure in Time-series</h3>
                 <h5>Research internship under Prof. Nithin Nagaraj, NIAS Bangalore<p>April 2021 – August 2021</p>
                 </h5>
+                <p></p>
                 <p>Developed ML models leveraging Fourier Transforms and chaotic maps to detect temporal patterns,
                     achieving 99% accuracy in causality detection across noisy, shifting datasets.</p>
                 <div class="project-links"><a
