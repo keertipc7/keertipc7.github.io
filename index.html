@@ -23,7 +23,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Navbar */
+        /* Base Navbar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -92,9 +92,12 @@
             transition: 0.3s;
         }
 
-        /* ========================
-   Responsive Styles
-======================== */
+        /* Hide the checkbox */
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             nav ul {
                 position: absolute;
@@ -108,7 +111,8 @@
                 transition: left 0.3s ease;
             }
 
-            nav ul.active {
+            /* Show menu when checkbox is checked */
+            #menu-toggle:checked~.nav-links {
                 left: 0;
             }
 
@@ -118,20 +122,28 @@
 
             .social-icons {
                 display: none;
+                /* Hide top-right socials on mobile */
             }
-        }
 
-        /* Hamburger Animation (turns into "X") */
-        .hamburger.open span:nth-child(1) {
-            transform: rotate(45deg) translateY(8px);
-        }
+            .mobile-socials {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                margin-top: 1rem;
+            }
 
-        .hamburger.open span:nth-child(2) {
-            opacity: 0;
-        }
+            /* Hamburger Animation into X */
+            #menu-toggle:checked+.hamburger span:nth-child(1) {
+                transform: rotate(45deg) translateY(8px);
+            }
 
-        .hamburger.open span:nth-child(3) {
-            transform: rotate(-45deg) translateY(-8px);
+            #menu-toggle:checked+.hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+
+            #menu-toggle:checked+.hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translateY(-8px);
+            }
         }
 
 
@@ -682,6 +694,15 @@
 
     <nav>
         <div class="logo">Keerti</div>
+
+        <!-- Hidden checkbox to control menu -->
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#career-timeline">Timeline</a></li>
@@ -689,20 +710,21 @@
             <li><a href="#education">Education</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li class="mobile-socials">
+                <a href="https://github.com/keertipc7" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/keerti-charantimath/" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="mailto:kcharant@andrew.cmu.edu"><i class="fas fa-envelope"></i></a>
+            </li>
         </ul>
+
         <div class="social-icons">
             <a href="https://github.com/keertipc7" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/keerti-charantimath/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:kcharant@andrew.cmu.edu"><i class="fas fa-envelope"></i></a>
         </div>
-
-        <!-- Hamburger Icon -->
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </nav>
+
 
     <section class="hero" id="hero">
         <div class="hero-text">
@@ -737,7 +759,8 @@
                     real-world problems.
                 </p>
                 <p>
-                    I am passionate about building transformative technology solutions that combine my technical depth with
+                    I am passionate about building transformative technology solutions that combine my technical depth
+                    with
                     product strategy and design thinking. At CMU, I am expanding my skills in innovation and product
                     development to bridge the gap between technology and user-centric solutions.
                 </p>
