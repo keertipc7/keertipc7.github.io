@@ -76,6 +76,65 @@
             color: #4e54c8;
         }
 
+        /* Hamburger Icon */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #444;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* ========================
+   Responsive Styles
+======================== */
+        @media (max-width: 768px) {
+            nav ul {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: #f3f0fb;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                transition: left 0.3s ease;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .social-icons {
+                display: none;
+            }
+        }
+
+        /* Hamburger Animation (turns into "X") */
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translateY(8px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-8px);
+        }
+
+
         /* Section Headings */
         section {
             padding: 6% 10%;
@@ -672,7 +731,8 @@
                 <p>I’m Keerti Panchakshari Charantimath, a Master’s student pursuing Integrated Innovation for Products
                     & Services at Carnegie Mellon University, with a background in Mathematics and Computing from IIT
                     Kharagpur (GPA: 9.17/10). I previously worked as a Software Engineer at Microsoft India, where I
-                    honed my expertise in web development. During my udergraduate studies, I gained valuable experience in AI/ML
+                    honed my expertise in web development. During my udergraduate studies, I gained valuable experience
+                    in AI/ML
                     through projects and thesis work, where I applied advanced computational methods to solve
                     real-world problems.
 
