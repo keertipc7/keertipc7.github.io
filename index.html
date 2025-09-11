@@ -1,25 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keerti's Portfolio</title>
+    <title>Keerti Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {font-family: 'Inter', 'Segoe UI', sans-serif; background: #f3f0fb; color: #333; line-height: 1.6; scroll-behavior: smooth;}
 
+        /* Navbar */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; position: fixed; top: 0; width: 100%;
+            background: #f3f0fb; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000;
+        }
+        nav .logo {font-size: 1.5rem; font-weight: bold; color: #222;}
+        nav ul {list-style: none; display: flex; gap: 2rem;}
+        nav ul li a {text-decoration: none; color: #444; font-weight: 500; transition: color 0.3s;}
+        nav ul li a:hover, nav ul li a.active {color: #4e54c8;}
+        .social-icons {display: flex; gap: 1rem;}
+        .social-icons a {color: #444; font-size: 1.2rem; transition: 0.3s;}
+        .social-icons a:hover {color: #4e54c8;}
+
+        /* Section Headings */
+        section {padding: 6% 10%;}
+        section h2 {
+            text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #222; position: relative;
+        }
+        section h2::after {
+            content: ""; display: block; width: 60px; height: 3px;
+            background: #f1c40f; margin: 0.5rem auto 0;
+        }
+
+        /* Hero */
+        .hero {display: flex; justify-content: space-between; align-items: center; padding: 8% 10%; min-height: 100vh;}
+        .hero-text {max-width: 50%;}
+        .hero-text h4 {color: #f1c40f; font-size: 1.2rem; margin-bottom: 0.5rem;}
+        .hero-text h1 {font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem; color: #222;}
+        .hero-text h2 {font-size: 1.5rem; margin-bottom: 1rem; color: #444;}
+        .hero-text p {font-size: 1rem; margin-bottom: 1.5rem; color: #555;}
+        .buttons {display: flex; gap: 1rem;}
+        .btn {padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 500; transition: 0.3s;}
+        .btn-primary {background: #222; color: #fff;}
+        .btn-primary:hover {background: #444;}
+        .btn-outline {border: 2px solid #222; color: #222;}
+        .btn-outline:hover {background: #222; color: #fff;}
+        .hero-img {width: 300px; height: 300px; border-radius: 50%; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
+        .hero-img img {width: 100%; height: 100%; object-fit: cover;}
+
+        /* About */
+        .about-container {display: flex; justify-content: space-between; gap: 3rem;}
+        .about-left, .about-right {flex: 1;}
+        .about-left h3, .about-right h3 {margin-bottom: 1rem; font-size: 1.3rem; color: #222;}
+        .about-left p {margin-bottom: 1rem; color: #555;}
+        .about-right ul {list-style: none;}
+        .about-right li {margin-bottom: 1rem; color: #555;}
+        .about-right li span {font-weight: bold; color: #222;}
+        .about-right li::before {content: "• "; color: #f1c40f; margin-right: 8px;}
+
+        /* Timeline */
+        .timeline-container { position: relative; padding: 4% 10%; }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, #6366f1, #3b82f6);
+            z-index: 10;
+        }
+        .timeline-events {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 20;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .event-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .event-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: scale(1.1);
+            z-index: 50;
+        }
+        .event-card .timeline-date {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #4e54c8;
+            margin-bottom: 0.25rem;
+        }
+        .event-card .timeline-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #222;
+            line-height: 1.25;
+        }
+        .event-card .timeline-subtitle {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+
+        /* Experience */
+        .experience-card {
+            background: #fff; padding: 1.5rem; margin-bottom: 2rem; border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative;
+        }
+        .experience-card h3 {color: #222; margin-bottom: 0.5rem;}
+        .experience-card h4 {color: #f39c12; margin-bottom: 0.5rem;}
+        .experience-card p {color: #555; margin-bottom: 1rem;}
+        .experience-card ul {list-style: none; padding-left: 1rem;}
+        .experience-card ul li {margin-bottom: 0.5rem; color: #555;}
+        .experience-card ul li::before {content: "• "; color: #f1c40f; margin-right: 8px;}
+        .experience-date {position: absolute; top: 20px; right: 20px; font-weight: bold; color: #666;}
+        .experience-link {display: inline-block; margin-top: 1rem; color: #4e54c8; text-decoration: none; font-weight: 500;}
+        .experience-link:hover {text-decoration: underline;}
+
+        /* Achievements */
+        .achievements-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;}
+        .achievement-card {
+            background: #fff; padding: 1.5rem; border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;
+        }
+        .achievement-card h3 {margin-bottom: 0.5rem; color: #222;}
+        .achievement-card p {color: #555;}
+
+        /* Education */
+        .edu-container {display: flex; gap: 3rem; justify-content: space-between; flex-wrap: wrap;}
+        .edu-left, .edu-right {flex: 1; min-width: 300px;}
+        .edu-card {background: #fff; padding: 1.5rem; margin-bottom: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
+        .edu-card h3 {color: #222; margin-bottom: 0.3rem;}
+        .edu-card h4 {color: #f39c12; margin-bottom: 0.5rem;}
+        .edu-card p {color: #555; margin-bottom: 1rem;}
+        .edu-card ul {list-style: none;}
+        .edu-card ul li {margin-bottom: 0.5rem; color: #555;}
+        .edu-card ul li::before {content: "• "; color: #f1c40f; margin-right: 8px;}
+        .highlight-box {background: #fff7d6; padding: 1rem; border-radius: 8px; color: #555; margin-top: 1rem;}
+
+        /* Skills */
+        .skills-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;}
+        .skills-card {background: #fff; padding: 1.5rem; border-radius: 10px; text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
+        .skills-card i {font-size: 2.5rem; color: #f1c40f; margin-bottom: 1rem;}
+        .tag {display: inline-block; background: #fff7d6; padding: 6px 12px; border-radius: 8px; margin: 5px; font-weight: 500;}
+
+
+        /* Projects */
+        .project-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;}
+        .project-card {background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
+        .project-card img {width: 100%; border-radius: 8px; margin-bottom: 1rem;}
+        .project-links a {margin-right: 1rem; color: #4e54c8; text-decoration: none;}
+        
+        /* Leadership & Volunteering */
+        .leadership-card {
+            background: #fff; padding: 1.5rem; margin-bottom: 2rem; border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .leadership-card h3 {color: #222; margin-bottom: 0.5rem;}
+        .leadership-card h4 {color: #f39c12; margin-bottom: 0.5rem;}
+        .leadership-card p {color: #555; margin-bottom: 1rem;}
+        .leadership-card ul {list-style: none; padding-left: 1rem;}
+        .leadership-card ul li {margin-bottom: 0.5rem; color: #555;}
+        .leadership-card ul li::before {content: "• "; color: #f1c40f; margin-right: 8px;}
+
+        /* Contact */
+        .contact {text-align: center;}
+        .contact h2 {margin-bottom: 1rem;}
+        .contact-icons {display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;}
+        .contact-icons a {font-size: 2rem; color: #444; transition: 0.3s;}
+        .contact-icons a:hover {color: #4e54c8;}
+
+        /* Responsive */
+        @media(max-width: 900px) {
+            .hero {flex-direction: column; text-align: center;}
+            .hero-text {max-width: 100%;}
+            .hero-img {margin-top: 2rem;}
+            .about-container, .edu-container, .skills-container {flex-direction: column;}
+            .project-grid, .achievements-grid, .skills-grid {grid-template-columns: 1fr;}
+            .timeline-line { display: none; }
+            .timeline-events { flex-direction: column; align-items: center; }
+            .event-card { width: 90%; }
+        }
+        @media(min-width: 900px) {
+            .timeline-events {
+                flex-direction: row;
+                gap: 1.5rem;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .event-card {
+                width: 12%;
+            }
+        }
+    </style>
+</head>
 <body>
+
     <nav>
         <div class="logo">Keerti</div>
-        <input type="checkbox" id="menu-toggle" />
-        <label for="menu-toggle" class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-        <ul class="nav-links">
+        <ul>
             <li><a href="#hero">Home</a></li>
+            <li><a href="#career-timeline">Timeline</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -31,19 +230,22 @@
             <a href="mailto:kcharant@andrew.cmu.edu"><i class="fas fa-envelope"></i></a>
         </div>
     </nav>
+
     <section class="hero" id="hero">
         <div class="hero-text">
             <h4>Hello, I'm</h4>
             <h1>Keerti Panchakshari Charantimath</h1>
-            <h4>Master's in Product Innovation at Carnegie Mellon University</h4>
+            <h2>Software Engineer at Microsoft | Aspiring Engineering Manager</h2>
+            <p>I am pursuing a Master’s in Integrated Innovation for Products & Services at Carnegie Mellon University. 
+            With a strong background in Mathematics & Computing from IIT Kharagpur, India.</p>
             <div class="buttons">
+                
                 <a href="#contact" class="btn btn-outline">Get In Touch</a>
-                <a href="https://drive.google.com/file/d/1Fsa7Ddz9vM197pBYciZKkJvjFMIMTzjv/view?usp=sharing"
-                    target="_blank" class="btn btn-outline">View My CV</a>
+                <a href="https://drive.google.com/file/d/1Fsa7Ddz9vM197pBYciZKkJvjFMIMTzjv/view?usp=sharing" target="_blank" class="btn btn-outline">View My CV</a>
             </div>
         </div>
         <div class="hero-img">
-            <img src="images\DSC02305_copy.JPG" alt="Keerti">
+            <img src="DSC02287.jpg" alt="Keerti">
         </div>
     </section>
 
@@ -52,29 +254,71 @@
         <div class="about-container">
             <div class="about-left">
                 <h3>My Story</h3>
-                <p>I’m a Master’s student pursuing Integrated Innovation for Products
-                    & Services at Carnegie Mellon University, with a background in Mathematics and Computing from IIT
-                    Kharagpur. I previously worked as a Software Engineer at Microsoft India, where I
-                    honed my expertise in web development. During my undergraduate studies, I gained valuable experience
-                    in AI/ML
-                    through projects and thesis work, where I applied advanced computational methods to solve
-                    real-world problems.
-                </p>
-                <p>
-                    I am passionate about building transformative technology solutions that combine my technical depth
-                    with
-                    product strategy and design thinking. At CMU, I am expanding my skills in innovation and product
-                    development to bridge the gap between technology and user-centric solutions.
-                </p>
+                <p>I am Keerti Panchakshari Charantimath, currently pursuing a Master’s in Integrated Innovation for Products & Services at Carnegie Mellon University. 
+                I completed my B.Sc + M.Sc in Mathematics and Computing from IIT Kharagpur (GPA: 9.17/10). I am presently working as a Software Engineer at Microsoft India.</p>
+                <p>My aim is to leverage my prior technological expertise and complement it with the skills and experiences gained at CMU to evolve into a product innovator. I aspire to design and develop impactful technological solutions that address real-world challenges, bridging the gap between advanced innovation and practical application.
+                My journey with educational NGOs and ed-tech firms made me realize the lack of standardization in education, 
+                motivating me to pursue engineering management and product innovation.</p>
             </div>
             <div class="about-right">
                 <h3>What Drives Me</h3>
                 <ul>
-                    <li><span>Collaboration:</span> Building relationships and working effectively in diverse teams.
-                    </li>
-                    <li><span>Growth:</span> Committed to continuous learning, expanding my skills and expertise.</li>
-                    <li><span>Impact:</span> Creating technology solutions that transform lives globally.</li>
+                    <li><span>Collaboration:</span> Building relationships and working effectively in diverse teams.</li>
+                    <li><span>Growth:</span> Continuous learning and helping others achieve their potential.</li>
+                    <li><span>Impact:</span> Creating accessible education that transforms lives globally.</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Timeline Section -->
+    <section id="career-timeline">
+        <h2>Career Timeline</h2>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-events">
+                <!-- Event: JEE Mains & Advanced -->
+                <div class="event-card">
+                    <div class="timeline-date">Jun '19</div>
+                    <div class="timeline-title">JEE Mains & Advanced</div>
+                    <div class="timeline-subtitle">Top 1% Rank</div>
+                </div>
+
+                <!-- Event: Started IIT Kharagpur -->
+                <div class="event-card">
+                    <div class="timeline-date">Jul '19</div>
+                    <div class="timeline-title">IIT Kharagpur</div>
+                    <div class="timeline-subtitle">Undergraduate Studies</div>
+                </div>
+                
+                <!-- Event: Microsoft Internship -->
+                <div class="event-card">
+                    <div class="timeline-date">May '23</div>
+                    <div class="timeline-title">Microsoft India</div>
+                    <div class="timeline-subtitle">Software Engineering Intern</div>
+                </div>
+
+                <!-- Event: Algozenith Internship -->
+                <div class="event-card">
+                    <div class="timeline-date">May '24</div>
+                    <div class="timeline-title">Algozenith Tech</div>
+                    <div class="timeline-subtitle">Product Management Intern</div>
+                </div>
+
+                <!-- Event: Microsoft Full-Time -->
+                <div class="event-card">
+                    <div class="timeline-date">Jul '24</div>
+                    <div class="timeline-title">Microsoft India</div>
+                    <div class="timeline-subtitle">Full-Time Employee</div>
+                </div>
+                
+                <!-- Event: CMU -->
+                <div class="event-card">
+                    <div class="timeline-date">Aug '25</div>
+                    <div class="timeline-title">Higher Studies</div>
+                    <div class="timeline-subtitle">Graduation Degree Started at CMU</div>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -82,114 +326,71 @@
     <section id="experience">
         <h2>Professional Experience</h2>
         <div class="experience-card">
-            <img src="images\Microsoft.png" alt="Microsoft Logo" class="experience-card-logo">
-            <div class="experience-card-content">
-                <h3>Software Engineer</h3>
-                <h4>Microsoft India</h4>
-                <span class="experience-date">July 2024 – August 2025</span>
-                <p>Designed, engineered, and maintained cloud-based Microsoft Sustainability solutions.</p>
-                <ul>
-                    <li>Automated UI testing through 30+ tests, saving manual weekly efforts of more than 100 hours.
-                    </li>
-                    <li>Improved accessibility for 50+ UI elements with better keyboard navigation and screen-reader
-                        support.
-                    </li>
-                    <li>
-                        Designed navigation for a new free offering, boosting subscriptions by 20% for the core
-                        Sustainability app.
-                    </li>
-                    <li>
-                        Enhanced more than 20 plugins, improving the integration between the front-end elements and the
-                        database.
-                    </li>
-                    <li>
-                        Authored technical reports and documentation to streamline the onboarding of customers for a new
-                        product.</li>
-                </ul>
-            </div>
+            <h3>Software Engineer</h3>
+            <h4>Microsoft India</h4>
+            <span class="experience-date">2024 – Present</span>
+            <p>Full-time role contributing to large-scale software solutions and cloud-based systems.</p>
+            <ul>
+                <li>Developed scalable software features impacting millions of users.</li>
+                <li>Collaborated with cross-functional teams to deliver high-quality releases.</li>
+                <li>Optimized performance and reduced latency by 30% in critical workflows.</li>
+                <li>Mentored junior developers and contributed to best practices documentation.</li>
+            </ul>
+            <a href="https://drive.google.com/file/d/1Sj6GKBhGDCXT5ELoCMXsdZS1Y8oIgNQH/view?usp=sharing" target="_blank" class="experience-link">View Report ↗</a>
         </div>
 
         <div class="experience-card">
-            <img src="images\algozenith.jpg" alt="Algozenith Logo" class="experience-card-logo">
-            <div class="experience-card-content">
-                <h3>Product Management Intern</h3>
-                <h4>Algozenith Technologies</h4>
-                <span class="experience-date">May 2024 - July 2024</span>
-                <p>Enhanced Algozenith’s ed-tech platform to improve user journey for 1200+ students.</p>
-                <ul>
-                    <li>Improved platform navigation and user workflows, resulting in an 80% increase in overall user
-                        satisfaction.</li>
-                    <li>Introduced the leaderboard and question bank features, driving an increase in user engagement
-                        and retention.</li>
-                    <li>Streamlined development lifecycle by implementing agile techniques, reducing time-to-market by
-                        1.5 times.</li>
-                    <li>Collaborated with developers and designers to align features with user needs and business goals.
-                    </li>
-                </ul>
-                <a href="https://drive.google.com/file/d/1FKcIsiF4hoXTOIPo7bqDw2gCek357XGi/view?usp=sharing"
-                    target="_blank" class="experience-link">View Certificate ↗</a>
-            </div>
+            <h3>Product Management Intern</h3>
+            <h4>Algozenith Technologies</h4>
+            <span class="experience-date">2024</span>
+            <p>Enhanced Algozenith’s ed-tech platform to improve user journey for 1200+ students.</p>
+            <ul>
+                <li>Improved platform navigation, boosting user satisfaction by 80%.</li>
+                <li>Introduced leaderboard & question bank features increasing engagement 32%.</li>
+                <li>Reduced time-to-market by 1.5× through agile planning.</li>
+                <li>Worked closely with developers and designers to align product goals.</li>
+            </ul>
+            <a href="https://drive.google.com/file/d/1FKcIsiF4hoXTOIPo7bqDw2gCek357XGi/view?usp=sharing" target="_blank" class="experience-link">View Report ↗</a>
         </div>
 
         <div class="experience-card">
-            <img src="images\Microsoft.png" alt="Microsoft Logo" class="experience-card-logo">
-            <div class="experience-card-content">
-                <h3>Software Engineer Intern</h3>
-                <h4>Microsoft India</h4>
-                <span class="experience-date">May 2023 - June 2023</span>
-                <p>Contributed to the Microsoft Sustainability Manager App by developing an impactful feature.</p>
-                <ul>
-                    <li>Built “What-if Analysis” feature, enabling firms to compare their emissions with greener
-                        alternatives.</li>
-                    <li>Automated computations that reduced 75% of manual work for more than companies.</li>
-                    <li>Created interactive dashboards with ReactJS for better data visualization and decision making.
-                    </li>
-                    <li>Integrated the front-end with back-end microservices and database using custom API based
-                        plugins.</li>
-                    <li>Received a return full-time offer for exemplary contribution to the project.</li>
-                </ul>
-                <a href="https://drive.google.com/file/d/1VME2oxBb3Ah-UTPrLyXzOodvYzqWi4N3/view?usp=sharing"
-                    target="_blank" class="experience-link">View Certificate ↗</a>
-            </div>
+            <h3>Software Engineer Intern</h3>
+            <h4>Microsoft India</h4>
+            <span class="experience-date">2023</span>
+            <p>Contributed to Microsoft Sustainability Manager App by developing impactful features.</p>
+            <ul>
+                <li>Built “What-if Analysis” feature enabling greener emissions comparisons.</li>
+                <li>Automated computations reducing manual work for 500+ companies.</li>
+                <li>Created dashboards with ReactJS for better data visualization.</li>
+                <li>Improved code reliability by implementing Playwright automation tests.</li>
+            </ul>
+            <a href="https://drive.google.com/file/d/1VME2oxBb3Ah-UTPrLyXzOodvYzqWi4N3/view?usp=sharing" target="_blank" class="experience-link">View Certificate ↗</a>
         </div>
+
+        
     </section>
 
+    <!-- Achievements -->
     <section id="achievements">
         <h2>Achievements</h2>
         <div class="achievements-grid">
-            <div class="achievement-card">
-                <h3>Selected among the top 10 Future STEM Leaders by Duolingo </h3>
-                <p></p><a href="https://www.instagram.com/p/DNTIsRgxScp/?img_index=2">View
-                    Post</a>
-            </div>
-            <div class="achievement-card">
-                <h3>Awarded a fellowship by India’s top 3 science institutes</h3>
-                <p> </p><a
-                    href="https://drive.google.com/file/d/1rPNOJp4hyk1e_-aZ4Ix2BkK_2LnW7K3q/view?usp=sharing">View
-                    Certificate</a>
-            </div>
-            <div class="achievement-card">
-                <h3>Top 1% among 1600+ students, earning a department change </h3>
-                <p></p><a href="https://drive.google.com/file/d/1J8m28iZ14zGGl8maRSBuH7GjYj37yh2O/view?usp=sharing">View
-                    Certificate</a>
-            </div>
-            <div class="achievement-card">
-                <h3>Achieved top 1% rank in JEE 2019, among 1 million+ entrants</h3>
-                <p></p><a href="https://drive.google.com/file/d/1isCaZbipcAUr711IUBMLgsddQfQkdcD-/view?usp=sharing">View
-                    Certificate</a>
-            </div>
+            <div class="achievement-card"><h3>Awarded fellowship in 2021 by India’s 3 most noble science institutes, ranking in top 10% of research aspirants</h3><p> </p><a href="https://drive.google.com/file/d/1rPNOJp4hyk1e_-aZ4Ix2BkK_2LnW7K3q/view?usp=sharing">View Certificate</a></div>
+            <div class="achievement-card"><h3>Top 1% among 1600+ students after first-year earning a Department Change to Mathematics and Computing</h3><p></p><a href="https://drive.google.com/file/d/1J8m28iZ14zGGl8maRSBuH7GjYj37yh2O/view?usp=sharing">View Certificate</a></div>
+            <div class="achievement-card"><h3>Achieved rank in top 0.9% of JEE Advanced 2019 and top 0.7% of JEE Mains 2019, out of 1 million+ entrants</h3><p></p><a href="https://drive.google.com/file/d/1isCaZbipcAUr711IUBMLgsddQfQkdcD-/view?usp=sharing">View Certificate</a></div>
+            <div class="achievement-card"><h3>Placed 3rd out of 50+ students in the Inter-IIT Painting Event, contributing to Gold in So-Cult Meet 2022-23</h3><p></p><a href="https://drive.google.com/file/d/1FNHSHcXdxUKFeKA2vXWJWQmtwCFiXeYb/view?usp=sharing">View Certificate</a></div>
         </div>
     </section>
 
+
     <section id="education">
-        <h2>Education</h2>
+        <h2>Education & Certifications</h2>
         <div class="edu-container">
             <div class="edu-left">
                 <div class="edu-card">
                     <h3>Master’s in Integrated Innovation for Products & Services</h3>
                     <h4>Carnegie Mellon University</h4>
                     <span>2024 – 2026</span>
-                    <p>Coursework: Design of AI Products, User Research</p>
+                    <p>Specialized program in engineering management, product innovation, and entrepreneurship.</p>
                 </div>
             </div>
             <div class="edu-right">
@@ -197,95 +398,60 @@
                     <h3>B.Sc + M.Sc (Dual Degree) in Mathematics and Computing</h3>
                     <h4>IIT Kharagpur</h4>
                     <span>2019 – 2024</span>
-                    <p>Graduated with GPA: 9.17/10 </p>
+                    <p>Graduated with GPA 9.17/10. Coursework in advanced mathematics, computing, and optimization.</p>
+                    <ul>
+                        <li>Department Rank 1 in several semesters.</li>
+                        <li>Completed thesis in applied machine learning.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
+
+    <!-- Skills -->
     <section id="skills">
         <h2>Skills & Expertise</h2>
         <div class="skills-grid">
             <div class="skills-card">
-                <i class="fas fa-code"></i>
-                <h3>Coding Languages</h3>
-                <div class="tags">
-                    <div class="tag">C/C++</div>
-                    <div class="tag">C#</div>
-                    <div class="tag">Python</div>
-                    <div class="tag">JavaScript</div>
-                    <div class="tag">TypeScript</div>
-                    <div class="tag">HTML</div>
-                    <div class="tag">CSS</div>
-                    <div class="tag">MATLAB</div>
-                    <div class="tag">LaTeX</div>
-                </div>
+                <i class="fas fa-code"></i><h3>Coding Languages</h3>
+                <div class="tags"><div class="tag">C/C++</div><div class="tag">C#</div><div class="tag">Python</div><div class="tag">JavaScript</div><div class="tag">TypeScript</div><div class="tag">HTML</div><div class="tag">CSS</div><div class="tag">MATLAB</div><div class="tag">LaTeX</div></div>
             </div>
             <div class="skills-card">
-                <i class="fas fa-microchip"></i>
-                <h3>Technical Skills</h3>
-                <div class="tags">
-                    <div class="tag">Machine Learning</div>
-                    <div class="tag">Data Science</div>
-                    <div class="tag">Optimization</div>
-                    <div class="tag">System Design</div>
-                </div>
+                <i class="fas fa-microchip"></i><h3>Technical Skills</h3>
+                <div class="tags"><div class="tag">Machine Learning</div><div class="tag">Data Science</div><div class="tag">Optimization</div><div class="tag">System Design</div></div>
             </div>
             <div class="skills-card">
-                <i class="fas fa-tools"></i>
-                <h3>Tools</h3>
-                <div class="tags">
-                    <div class="tag">Figma</div>
-                    <div class="tag">Google Analytics</div>
-                    <div class="tag">Microsoft Excel</div>
-                    <div class="tag">Git</div>
-                    <div class="tag">AI Tools</div>
-                    <div class="tag">ReactJS</div>
-                    <div class="tag">Microsoft Power Platform</div>
-                    <div class="tag">Playwright Automation</div>
-                </div>
+                <i class="fas fa-tools"></i><h3>Tools</h3>
+                <div class="tags"><div class="tag">Figma</div><div class="tag">Google Analytics</div><div class="tag">Microsoft Excel</div><div class="tag">Git</div><div class="tag">AI Tools</div><div class="tag">ReactJS</div><div class="tag">Microsoft Power Platform</div><div class="tag">Playwright Automation</div></div>
             </div>
             <div class="skills-card">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Core Competencies</h3>
-                <div class="tags">
-                    <div class="tag">Problem Solving</div>
-                    <div class="tag">Team Leadership</div>
-                    <div class="tag">Communication</div>
-                    <div class="tag">Critical Thinking</div>
-                    <div class="tag">Adaptability</div>
-                    <div class="tag">Time Management</div>
-                    <div class="tag">Mentoring</div>
-                    <div class="tag">Strategic Planning</div>
-                </div>
+                <i class="fas fa-lightbulb"></i><h3>Core Competencies</h3>
+                <div class="tags"><div class="tag">Problem Solving</div><div class="tag">Team Leadership</div><div class="tag">Communication</div><div class="tag">Critical Thinking</div><div class="tag">Adaptability</div><div class="tag">Time Management</div><div class="tag">Mentoring</div><div class="tag">Strategic Planning</div></div>
             </div>
         </div>
     </section>
 
+
+
+    <!-- Projects -->
     <section id="projects">
         <h2>Featured Projects</h2>
         <div class="project-grid">
-            <div class="project-card">
-                <h3>Privacy Enhanced Conversational AI using Large Language Models</h3>
-                <br />
-                <p>Built a secure local LLM chatbot that ingests custom files to answer queries with 98% accuracy while
-                    minimizing data leak risk using encryption and hashing.</p>
-                <br />
-                <div class="project-links"><a
-                        href="https://drive.google.com/file/d/1R1yZvOhNeaXnkXKn9bjbxKcJWl-HUNQH/view?usp=drive_link">Certificate</a><a
-                        href="https://drive.google.com/file/d/1H0myea6IzCp5qEo_oHyNaFMoBUyIeNmP/view?usp=drive_link">Report</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <h3>Learning Generalized Causal Structure in Time-series</h3>
-                <br />
-                <p>Developed ML models leveraging Fourier Transforms and chaotic maps to detect temporal patterns,
-                    achieving 99% accuracy in causality detection across noisy, shifting datasets.</p>
-                <br />
-                <div class="project-links"><a
-                        href="https://drive.google.com/file/d/1jv50l347CZGUsFpZ_1sC_L0Tt7qab-kT/view?usp=drive_link">Certificate</a><a
-                        href="https://arxiv.org/pdf/2112.03085">Report</a></div>
-            </div>
+            <div class="project-card"><img src="DSC02287.jpg"><h3>Privacy Enhanced Conversational AI using Large Language Models</h3><h5>Thesis project guided by Prof. Hari Shankar Mahato, IIT Kharagpur <p>August 2023 – May 2024</p1></h5><p>• Achieved 98% accuracy with a local LLM chatbot that ingests data via chunking to answer questions from custom private files</p><p>
+            • Reduced data leak risk to ∼0% by using symmetric encryption and hashing for secure access to ingested embeddings on IPFS</p><div class="project-links"><a href="https://drive.google.com/file/d/1R1yZvOhNeaXnkXKn9bjbxKcJWl-HUNQH/view?usp=drive_link">Certificate</a><a href="https://drive.google.com/file/d/1H0myea6IzCp5qEo_oHyNaFMoBUyIeNmP/view?usp=drive_link">Report</a></div></div>
+
+
+            <div class="project-card"><img src="DSC02287.jpg"><h3>Learning Generalized Causal Structure in Time-series</h3><h5>Research internship under Prof. Nithin Nagaraj, NIAS Bangalore<p>April 2021 – August 2021</p></h5><p>• Enabled ML models to identify temporal patterns in time series using Fourier Transform and neuron-imitating chaotic maps</p><p>
+            • Attained 99% accuracy in causality detection on Logistic Classifier across 14 test sets with high noise and distribution shifts</p><div class="project-links"><a href="https://drive.google.com/file/d/1jv50l347CZGUsFpZ_1sC_L0Tt7qab-kT/view?usp=drive_link">Certificate</a><a href="https://arxiv.org/pdf/2112.03085">Report</a></div></div>
+
+
+            <div class="project-card"><img src="DSC02287.jpg"><h3>Comparative Study of Conventional and Genetic Algorithms based Classifiers</h3><5>Course project guided by Prof. Nirupam Chakraborti, IIT Kharagpur<p>January 2021 – April 2021</p></h5><p>• Outperformed the accuracy of Logistic Classifier by 2% via developing a reliable genetic algorithms based multi-class classifier</p><p>
+            • Boosted the performance of classifiers such as Random Forest by 4.6% with a feature selector built on evolutionary principles
+            </p><div class="project-links"><a href="https://drive.google.com/file/d/17a4oB-sRuhXHty8Jksh0hYwPa0hjSscS/view?usp=sharing">Certificate</a><a href="https://drive.google.com/file/d/1QQMukRFR_4hUiBqfmkFNOBnF87dzWAGi/view?usp=sharing">Report</a></div></div>
+
+
+            <div class="project-card"><img src="DSC02287.jpg"><h3>Secure Chat Application</h3><p>Encrypted Python chat with GUI + key exchange.</p><div class="project-links"><a href="#">Certificate</a><a href="#">Report</a></div></div>
         </div>
     </section>
 
@@ -294,46 +460,55 @@
         <div class="leadership-card">
             <h3>Fine-Arts Cup Captain </h3>
             <h4>SN/IG Hall of Residence, IIT Kharagpur</h4>
-            <h5>Led a 15+ member team to win 1st place in the Fine-Arts Cup</h5>
-            <a href="https://drive.google.com/file/d/17jwYDrxvBAFLrlC2LqgTacA4OvjhcDGd/view?usp=sharing" target="_blank"
-                class="experience-link">Certificate ↗</a>
+            <h5>August 2022 – May 2023</h5>
+            <ul>
+                <li>Led a team of <b>15+</b> members to Gold in painting and clay modeling and 4th place in big-art challenge with a <b>6 x 10 feet</b> work</li>
+                <li>Secured the <b> First position</b> in the Fine-Arts Cup by excelling in 5 competitive art events, outperforming 20 halls of residences</li>
+            </ul>
+            <a href="https://drive.google.com/file/d/17jwYDrxvBAFLrlC2LqgTacA4OvjhcDGd/view?usp=sharing" target="_blank" class="experience-link">Certificate ↗</a>
         </div>
         <div class="leadership-card">
             <h3>Finance and Gymkhana Head </h3>
             <h4>Spectra, Fine-Arts Society, IIT Kharagpur</h4>
-            <h5>Managed a budget of INR 60k+, which was used to conduct 7 interactive art
-                workshops, exhibitions, and competitions</h5>
+            <h5>August 2021 – May 2022</h5>
+            <ul>
+                <li>Spearheaded the management of an annual budget of <b>60k+</b> for <b>7</b> interactive events and workshops, engaging <b>100+</b> students</li>
+                <li>Garnered <b>1.5k+</b> reach on Instagram via virtual art events and led an in-person art fair with <b>300+</b> entries and<b> 5k+</b> attendees</li>
             </ul>
-            <a href="https://drive.google.com/file/d/1gaZgiLHyDUBm-EVzNPGxC0rQYY2UrwlR/view?usp=sharing" target="_blank"
-                class="experience-link">Certificate ↗</a>
+            <a href="https://drive.google.com/file/d/1gaZgiLHyDUBm-EVzNPGxC0rQYY2UrwlR/view?usp=sharing" target="_blank" class="experience-link">Certificate ↗</a>
         </div>
         <div class="leadership-card">
             <h3>Volunteer Teacher</h3>
-            <h4>Build Rural Artificial Intelligence Network, eVidyaloka Trust</h4>
-            <h5>Dedicated 10+ hours weekly to teach AI and future-ready technology skills to 25 rural students of class
-                8 </h5>
-            <a href="https://drive.google.com/file/d/16TCC-qmyvw8PcLYBnx7T86XbONCY1RpL/view?usp=sharing" target="_blank"
-                class="experience-link">Certificate ↗</a>
+            <h4>SBuild Rural Artificial Intelligence Network, eVidyaloka Trust</h4>
+            <h5>October 2024 – March 2025</h5>
+            <ul>
+                <li>Introduced AI and future-ready technology skills to <b>25</b> students of class 8 at the Government High School, Gobarhela village</li>
+                <li>Dedicating <b>10+</b> hours monthly to teach the course in the regional language, Hindi, making technology education accessible</li>
+            </ul>
+            <a href="https://drive.google.com/file/d/16TCC-qmyvw8PcLYBnx7T86XbONCY1RpL/view?usp=sharing" target="_blank" class="experience-link">Certificate ↗</a>
         </div>
         <div class="leadership-card">
             <h3>Design Intern</h3>
             <h4>Gopali Youth Welfare Society, Kharagpur</h4>
-            <h5>Transformed the Society’s free hostels with hand-painted murals, brightening the living spaces of
-                60+ underprivileged kids</h5>
-            <a href="https://drive.google.com/file/d/1PWVTw01fo_Q85ZHxy_gacuJtQNkdzaR-/view?usp=sharing" target="_blank"
-                class="experience-link">Certificate ↗</a>
+            <h5>March 2022</h5>
+            <ul>
+                <li>Transformed the Society’s free hostels with hand-painted murals, brightening the living spaces of<b> 60+ </b>underprivileged kids</li>
+                <li>Orchestrated <b>3</b> interactive art competitions and workshops for<b> 250+</b> students, fostering creativity at the NGO-run school</li>
+            </ul>
+            <a href="https://drive.google.com/file/d/1PWVTw01fo_Q85ZHxy_gacuJtQNkdzaR-/view?usp=sharing" target="_blank" class="experience-link">Certificate ↗</a>
         </div>
     </section>
+
 
     <section id="contact" class="contact">
         <h2>Contact Me</h2>
         <p>Let’s connect! Reach out through any of the following:</p>
         <div class="contact-icons">
+            <a href="https://github.com/keertipc7" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/keerti-charantimath/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:kcharant@andrew.cmu.edu"><i class="fas fa-envelope"></i></a>
         </div>
     </section>
-	    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-	<script src="script.js"></script>
+
 </body>
 </html>
