@@ -183,7 +183,7 @@
         }
 
         .hero-text h4 {
-            color: #f1c40f;
+            color: #f39c12;
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
@@ -301,6 +301,9 @@
         .timeline-container {
             position: relative;
             padding: 4% 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .timeline-line::before {
@@ -314,31 +317,19 @@
             z-index: 10;
         }
 
+        /* Updated timeline-events to flex on one line without overflow */
         .timeline-events {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: nowrap;
             align-items: flex-start;
-            flex-wrap: wrap;
             position: relative;
             z-index: 20;
             gap: 2rem;
             margin-top: 2rem;
+            justify-content: center;
         }
 
-        .event-card-container {
-            display: flex;
-            /* arrange children in a row */
-            flex-wrap: nowrap;
-            /* prevent wrapping to the next line */
-            gap: 1rem;
-            /* optional spacing between cards */
-            justify-content: flex-start;
-            /* align to left, change to center if needed */
-            overflow-x: auto;
-            /* allow horizontal scrolling if the cards exceed screen width */
-            padding: 1rem;
-        }
-
+        /* Updated event-card to be flexible in width */
         .event-card {
             position: relative;
             display: flex;
@@ -351,15 +342,13 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
             text-align: center;
-
-            /* Make all cards the same size */
-            min-width: 250px;
-            /* set to the width of the largest card */
-            min-height: 200px;
-            /* set to the height of the largest card */
-            width: 100%;
+            min-width: 150px;
+            height: 200px;
             box-sizing: border-box;
+            flex: 1;
+            /* Allows boxes to grow and shrink equally */
         }
+
 
         .event-card:hover {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -519,6 +508,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            align-items: stretch;
+            /* Ensure equal height for grid items */
         }
 
         .achievement-card {
@@ -527,6 +518,15 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Updated CSS to remove underline from links in achievement cards */
+        .achievement-card a {
+            text-decoration: none;
         }
 
         .achievement-card h3 {
@@ -537,6 +537,14 @@
         .achievement-card p {
             color: #555;
         }
+
+        .achievement-icon {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 0.2rem;
+        }
+
 
         /* Education */
         .edu-container {
@@ -577,6 +585,7 @@
 
         .edu-card ul {
             list-style: none;
+            padding-left: 1rem;
         }
 
         .edu-card ul li {
@@ -636,23 +645,54 @@
             gap: 2rem;
         }
 
+        /* Updated CSS for project cards */
         .project-card {
             background: #fff;
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        project-card img {
-            flex-shrink: 0;
-            /* prevent logo from shrinking */
-            width: 60px;
-            /* adjust size as needed */
-            height: 60px;
-            border-radius: 10px;
-            /* optional, for rounded logos */
+        .project-image {
+            width: 100%;
+            height: 150px;
+            /* Set a fixed height for consistency */
             object-fit: contain;
-            /* keep logo proportion */
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        /* New styles for project title with icon */
+        .project-title-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Increased icon size */
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        /* New styles for description box */
+        .project-description-box {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            /* Allows the box to expand to fill available space */
+        }
+
+        .project-description-box p {
+            margin: 0;
+            color: #555;
         }
 
         .project-links a {
@@ -727,6 +767,32 @@
             color: #4e54c8;
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #4e54c8;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Responsive */
         @media(max-width: 900px) {
             .hero {
@@ -772,7 +838,7 @@
             .timeline-events {
                 flex-direction: row;
                 gap: 1.5rem;
-                justify-content: space-between;
+                justify-content: center;
                 align-items: center;
             }
 
@@ -815,9 +881,9 @@
 
     <section class="hero" id="hero">
         <div class="hero-text">
-            <h4>Hello, I'm</h4>
+            <h4 style="color: #f39c12;">Hello, I'm</h4>
             <h1>Keerti Panchakshari Charantimath</h1>
-            <h4>Master's in Product Innovation at Carnegie Mellon University</h4>
+            <h4 style="color: #f39c12;">Master's in Product Innovation at Carnegie Mellon University</h4>
             <!-- <p>I am pursuing a Master’s in Integrated Innovation for Products & Services at Carnegie Mellon University. 
             With a strong background in Mathematics & Computing from IIT Kharagpur, India.</p> -->
             <div class="buttons">
@@ -828,7 +894,8 @@
             </div>
         </div>
         <div class="hero-img">
-            <img src="images\DSC02305_copy.JPG" alt="Keerti">
+            <img src="images/DSC02305_copy.JPG" alt="Keerti"
+                onerror="this.src='https://placehold.co/300x300/F0F0F0/ADADAD?text=Keerti'" />
         </div>
     </section>
 
@@ -865,7 +932,7 @@
     </section>
 
     <!-- Career Timeline Section -->
-    <!-- <section id="career-timeline">
+    <section id="career-timeline">
         <h2>Career Timeline</h2>
         <div class="timeline-container">
             <div class="timeline-line"></div>
@@ -908,12 +975,13 @@
 
             </div>
         </div>
-    </section> -->
+    </section>
 
     <section id="experience">
         <h2>Professional Experience</h2>
         <div class="experience-card">
-            <img src="images\Microsoft.png" alt="Microsoft Logo" class="experience-card-logo">
+            <img src="images/Microsoft.png" alt="Microsoft Logo" class="experience-card-logo"
+                onerror="this.src='https://placehold.co/60x60/F0F0F0/ADADAD?text=MS'" />
             <div class="experience-card-content">
                 <h3>Software Engineer</h3>
                 <h4>Microsoft India</h4>
@@ -942,7 +1010,8 @@
         </div>
 
         <div class="experience-card">
-            <img src="images\algozenith.jpg" alt="Algozenith Logo" class="experience-card-logo">
+            <img src="images/algozenith.jpg" alt="Algozenith Logo" class="experience-card-logo"
+                onerror="this.src='https://placehold.co/60x60/F0F0F0/ADADAD?text=AZ'" />
             <div class="experience-card-content">
                 <h3>Product Management Intern</h3>
                 <h4>Algozenith Technologies</h4>
@@ -964,7 +1033,8 @@
         </div>
 
         <div class="experience-card">
-            <img src="images\Microsoft.png" alt="Microsoft Logo" class="experience-card-logo">
+            <img src="images/Microsoft.png" alt="Microsoft Logo" class="experience-card-logo"
+                onerror="this.src='https://placehold.co/60x60/F0F0F0/ADADAD?text=MS'" />
             <div class="experience-card-content">
                 <h3>Software Engineer Intern</h3>
                 <h4>Microsoft India</h4>
@@ -994,22 +1064,30 @@
         <h2>Achievements</h2>
         <div class="achievements-grid">
             <div class="achievement-card">
+                <img src="images/duo.png" alt="Duolingo Logo" class="achievement-icon"
+                    onerror="this.src='https://placehold.co/200x200/F0F0F0/ADADAD?text=Duolingo'" />
                 <h3>Selected among the top 10 Future STEM Leaders by Duolingo </h3>
                 <p></p><a href="https://www.instagram.com/p/DNTIsRgxScp/?img_index=2">View
                     Post</a>
             </div>
             <div class="achievement-card">
+                <img src="images/fellow.jpeg" alt="Award Icon" class="achievement-icon"
+                    onerror="this.src='https://placehold.co/200x200/F0F0F0/ADADAD?text=Award'" />
                 <h3>Awarded a fellowship by India’s top 3 science institutes</h3>
                 <p> </p><a
                     href="https://drive.google.com/file/d/1rPNOJp4hyk1e_-aZ4Ix2BkK_2LnW7K3q/view?usp=sharing">View
                     Certificate</a>
             </div>
             <div class="achievement-card">
+                <img src="images/dept_c.jpeg" alt="Trophy Icon" class="achievement-icon"
+                    onerror="this.src='https://placehold.co/200x200/F0F0F0/ADADAD?text=Trophy'" />
                 <h3>Top 1% among 1600+ students, earning a department change </h3>
                 <p></p><a href="https://drive.google.com/file/d/1J8m28iZ14zGGl8maRSBuH7GjYj37yh2O/view?usp=sharing">View
                     Certificate</a>
             </div>
             <div class="achievement-card">
+                <img src="images/jee.jpeg" alt="Medal Icon" class="achievement-icon"
+                    onerror="this.src='https://placehold.co/200x200/F0F0F0/ADADAD?text=Medal'" />
                 <h3>Achieved top 1% rank in JEE 2019, among 1 million+ entrants</h3>
                 <p></p><a href="https://drive.google.com/file/d/1isCaZbipcAUr711IUBMLgsddQfQkdcD-/view?usp=sharing">View
                     Certificate</a>
@@ -1108,12 +1186,18 @@
         <h2>Featured Projects</h2>
         <div class="project-grid">
             <div class="project-card">
-                <!-- <img src="images\iitkgp.png"> -->
-                <h3>Privacy Enhanced Conversational AI using Large Language Models</h3>
-                <br/>
+                <img src="images/LLM.jpeg" alt="A placeholder image for the Conversational AI project"
+                    class="project-image" onerror="this.src='https://placehold.co/400x150/F0F0F0/ADADAD?text=LLM+AI'" />
+                <div class="project-description-box">
+                    <h6>Algorithm that runs LLM on custom files</h6>
+                </div>
+                <div class="project-title-container">
+                    <img src="images/iitkgp_logo.svg" alt="AI Icon" class="project-icon"
+                        onerror="this.src='https://placehold.co/40x40/F0F0F0/ADADAD?text=IIT'" />
+                    <h3>Privacy Enhanced Conversational AI using Large Language Models</h3>
+                </div>
                 <p>Built a secure local LLM chatbot that ingests custom files to answer queries with 98% accuracy while
                     minimizing data leak risk using encryption and hashing.</p>
-                    <br/>
                 <div class="project-links"><a
                         href="https://drive.google.com/file/d/1R1yZvOhNeaXnkXKn9bjbxKcJWl-HUNQH/view?usp=drive_link">Certificate</a><a
                         href="https://drive.google.com/file/d/1H0myea6IzCp5qEo_oHyNaFMoBUyIeNmP/view?usp=drive_link">Report</a>
@@ -1122,12 +1206,21 @@
 
 
             <div class="project-card">
-                <!-- <img src="images\NIAS_logo.jpg"> -->
-                <h3>Learning Generalized Causal Structure in Time-series</h3>
-                <br/>
+                <img src="images/graph.jpg"
+                    alt="A placeholder image for the Learning Generalized Causal Structure in Time-series project"
+                    class="project-image" onerror="this.src='https://placehold.co/400x150/F0F0F0/ADADAD?text=Time+Series+Graph'" />
+                <div class="project-description-box">
+                    <h6>Extracted feature representation for the amplitude at each frequency for causal time-series:
+                        (a)AR(15),
+                        (b)AR(100), (c)ARMA and (d)ARFIMA</h6>
+                </div>
+                <div class="project-title-container">
+                    <img src="images/NIAS_logo.jpg" alt="ML Icon" class="project-icon"
+                        onerror="this.src='https://placehold.co/40x40/F0F0F0/ADADAD?text=NIAS'" />
+                    <h3>Learning Generalized Causal Structure in Time-series</h3>
+                </div>
                 <p>Developed ML models leveraging Fourier Transforms and chaotic maps to detect temporal patterns,
                     achieving 99% accuracy in causality detection across noisy, shifting datasets.</p>
-                    <br/>
                 <div class="project-links"><a
                         href="https://drive.google.com/file/d/1jv50l347CZGUsFpZ_1sC_L0Tt7qab-kT/view?usp=drive_link">Certificate</a><a
                         href="https://arxiv.org/pdf/2112.03085">Report</a></div>
@@ -1135,8 +1228,8 @@
 
 
             <!-- <div class="project-card"><img src="DSC02287.jpg">
-                <h3>Comparative Study of Conventional and Genetic Algorithms based Classifiers</h3>
-                <5>Course project guided by Prof. Nirupam Chakraborti, IIT Kharagpur<p>January 2021 – April 2021</p>
+                    <h3>Comparative Study of Conventional and Genetic Algorithms based Classifiers</h3>
+                    <5>Course project guided by Prof. Nirupam Chakraborti, IIT Kharagpur<p>January 2021 – April 2021</p>
                     </h5>
                     <p>• Outperformed the accuracy of Logistic Classifier by 2% via developing a reliable genetic
                         algorithms based multi-class classifier</p>
@@ -1147,14 +1240,13 @@
                     <div class="project-links"><a
                             href="https://drive.google.com/file/d/17a4oB-sRuhXHty8Jksh0hYwPa0hjSscS/view?usp=sharing">Certificate</a><a
                             href="https://drive.google.com/file/d/1QQMukRFR_4hUiBqfmkFNOBnF87dzWAGi/view?usp=sharing">Report</a>
-                    </div>
             </div> -->
 
 
             <!-- <div class="project-card"><img src="DSC02287.jpg">
-                <h3>Secure Chat Application</h3>
-                <p>Encrypted Python chat with GUI + key exchange.</p>
-                <div class="project-links"><a href="#">Certificate</a><a href="#">Report</a></div>
+                    <h3>Secure Chat Application</h3>
+                    <p>Encrypted Python chat with GUI + key exchange.</p>
+                    <div class="project-links"><a href="#">Certificate</a><a href="#">Report</a></div>
             </div> -->
         </div>
     </section>
@@ -1176,7 +1268,7 @@
 
             </ul>
             <a href="https://drive.google.com/file/d/1gaZgiLHyDUBm-EVzNPGxC0rQYY2UrwlR/view?usp=sharing" target="_blank"
-                class="experience-link">Certificate ↗</a>
+                class="experience-link">View Certificate ↗</a>
         </div>
         <div class="leadership-card">
             <h3>Volunteer Teacher</h3>
@@ -1184,7 +1276,7 @@
             <h5>Dedicated 10+ hours weekly to teach AI and future-ready technology skills to 25 rural students of class
                 8 </h5>
             <a href="https://drive.google.com/file/d/16TCC-qmyvw8PcLYBnx7T86XbONCY1RpL/view?usp=sharing" target="_blank"
-                class="experience-link">Certificate ↗</a>
+                class="experience-link">View Certificate ↗</a>
         </div>
         <div class="leadership-card">
             <h3>Design Intern</h3>
@@ -1192,7 +1284,7 @@
             <h5>Transformed the Society’s free hostels with hand-painted murals, brightening the living spaces of
                 60+ underprivileged kids</h5>
             <a href="https://drive.google.com/file/d/1PWVTw01fo_Q85ZHxy_gacuJtQNkdzaR-/view?usp=sharing" target="_blank"
-                class="experience-link">Certificate ↗</a>
+                class="experience-link">View Certificate ↗</a>
         </div>
     </section>
 
@@ -1205,6 +1297,46 @@
             <a href="mailto:kcharant@andrew.cmu.edu"><i class="fas fa-envelope"></i></a>
         </div>
     </section>
+
+    <a href="#hero" class="back-to-top" id="backToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 
 </body>
 
