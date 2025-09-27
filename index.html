@@ -348,8 +348,7 @@
             flex: 1;
             /* Allows boxes to grow and shrink equally */
         }
-
-
+        
         .event-card:hover {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transform: scale(1.1);
@@ -566,6 +565,18 @@
             margin-bottom: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            text-align: center; /* Center text within the card */
+        }
+        
+        .edu-icon {
+            width: 120px; /* Consistent icon size */
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 8px;
         }
 
         .edu-card h3 {
@@ -995,7 +1006,8 @@
                         support.
                     </li>
                     <li>
-                        Designed navigation for a new free offering, boosting subscriptions by 20% for the core
+                        Design (
+                            navigation for a new free offering, boosting subscriptions by 20% for the core
                         Sustainability app.
                     </li>
                     <li>
@@ -1071,7 +1083,7 @@
                     Post</a>
             </div>
             <div class="achievement-card">
-                <img src="images/fellow.jpeg" alt="Award Icon" class="achievement-icon"
+                <img src="images/award.png" alt="Award Icon" class="achievement-icon"
                     onerror="this.src='https://placehold.co/200x200/F0F0F0/ADADAD?text=Award'" />
                 <h3>Awarded a fellowship by India’s top 3 science institutes</h3>
                 <p> </p><a
@@ -1079,14 +1091,14 @@
                     Certificate</a>
             </div>
             <div class="achievement-card">
-                <img src="images/dept_c.jpeg" alt="Trophy Icon" class="achievement-icon"
+                <img src="images/trophy.png" alt="Trophy Icon" class="achievement-icon"
                     onerror="this.src='https://placehold.co/200x200/F0F0F0/ADADAD?text=Trophy'" />
                 <h3>Top 1% among 1600+ students, earning a department change </h3>
                 <p></p><a href="https://drive.google.com/file/d/1J8m28iZ14zGGl8maRSBuH7GjYj37yh2O/view?usp=sharing">View
                     Certificate</a>
             </div>
             <div class="achievement-card">
-                <img src="images/jee.jpeg" alt="Medal Icon" class="achievement-icon"
+                <img src="images/medal.png" alt="Medal Icon" class="achievement-icon"
                     onerror="this.src='https://placehold.co/200x200/F0F0F0/ADADAD?text=Medal'" />
                 <h3>Achieved top 1% rank in JEE 2019, among 1 million+ entrants</h3>
                 <p></p><a href="https://drive.google.com/file/d/1isCaZbipcAUr711IUBMLgsddQfQkdcD-/view?usp=sharing">View
@@ -1101,6 +1113,9 @@
         <div class="edu-container">
             <div class="edu-left">
                 <div class="edu-card">
+                    <!-- Added image with fallback -->
+                    <img src="images\CMU Logo.png" alt="Carnegie Mellon University Logo" class="edu-icon" 
+                        onerror="this.src='https://placehold.co/60x60/1e293b/f1c40f?text=CMU'" />
                     <h3>Master’s in Integrated Innovation for Products & Services</h3>
                     <h4>Carnegie Mellon University</h4>
                     <span>2024 – 2026</span>
@@ -1109,6 +1124,9 @@
             </div>
             <div class="edu-right">
                 <div class="edu-card">
+                    <!-- Added image with fallback -->
+                    <img src="images\iitkgp.png" alt="IIT Kharagpur Logo" class="edu-icon" 
+                        onerror="this.src='https://placehold.co/60x60/1e293b/f1c40f?text=IIT'" />
                     <h3>B.Sc + M.Sc (Dual Degree) in Mathematics and Computing</h3>
                     <h4>IIT Kharagpur</h4>
                     <span>2019 – 2024</span>
@@ -1178,7 +1196,6 @@
             </div>
         </div>
     </section>
-
 
 
     <!-- Projects -->
@@ -1301,12 +1318,12 @@
     <a href="#hero" class="back-to-top" id="backToTopBtn">
         <i class="fas fa-arrow-up"></i>
     </a>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.nav-links a');
             navLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetSection = document.querySelector(targetId);
