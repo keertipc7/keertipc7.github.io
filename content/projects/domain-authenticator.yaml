@@ -1,0 +1,124 @@
+title: "Domain Authenticator"
+category: "AI Product · Solo build"
+tagline: "Know if a site is trustworthy before you interact with it."
+image: "🛡️"
+heroImage: "/domain-authenticator/demo.gif"
+featured: true
+featuredBlurb: "A Chrome extension that scores every domain you visit in real time, warns on suspicious sites and blocks dangerous ones. Heuristics, Llama 3.1 8B on Cloudflare Workers AI, and weighted community votes, served from the edge. The scoring engine is live on this site."
+stats:
+  role: "Product, design & engineering"
+  team: "Solo"
+  course: "Independent project"
+links:
+  - label: "Try the live demo"
+    href: "/domain-authenticator/index.html"
+  - label: "Code on GitHub"
+    href: "https://github.com/keertipc7/domain-authenticator"
+
+sections:
+  - type: "full_width_text"
+    content: "The average phishing site is live for 21 hours before any blocklist catches it."
+
+  - type: "feature_list"
+    heading: "Phishing works because defenses lag"
+    features:
+      - title: "Blocklists are reactive"
+        desc: "Safe Browsing only catches reported domains, hours after they’re live."
+      - title: "Typosquatting costs $1"
+        desc: "Registering g00gle.xyz takes seconds. Most users won’t notice."
+      - title: "Network tools are blind to the browser"
+        desc: "A page that loads clean HTML and renders a phishing form via JavaScript is invisible to proxies."
+
+  - type: "highlight_box"
+    heading: "The white space"
+    content: "Nobody scores domains at navigation time. Network tools see HTTP payloads, endpoint agents see OS state, and neither sees inside a browser tab. Domain Authenticator analyzes domains at the browser layer and surfaces risk before you interact."
+
+  - type: "info_grid"
+    heading: "Who it’s for"
+    cols: 3
+    items:
+      - icon: "briefcase"
+        title: "Enterprise employee"
+        desc: "Handles sensitive data daily and gets phishing emails mimicking internal tools. Needs protection that requires no behavior change."
+      - icon: "shield-check"
+        title: "IT / Security admin"
+        desc: "Owns the org’s security posture. Wants a browser-layer signal to act on (warn or isolate) within the existing policy engine."
+      - icon: "code"
+        title: "Developer / power user"
+        desc: "Clicks dozens of unfamiliar links daily. Wants a fast check on links from Slack, GitHub, or email before navigating."
+
+  - type: "text_block"
+    heading: "What it does"
+    content: "Each feature closes a specific gap."
+    listItems:
+      - "Auto-analyzes on every navigation: a color-coded trust score badge on every tab, no manual action needed."
+      - "Blocks dangerous sites with a full-screen overlay showing the AI’s reasoning, with a “proceed anyway” escape hatch."
+      - "Warns on suspicious sites with an amber banner at the top of the page that auto-dismisses after 10 seconds."
+      - "A detailed popup: trust gauge, per-signal breakdown, and a plain-English AI explanation."
+      - "Right-click any link to analyze it before you click."
+      - "Community voting (Safe / Suspicious / Unsafe) and a way to report AI mistakes, both feeding back into scoring."
+
+  - type: "process_steps"
+    heading: "How the score is calculated"
+    items:
+      - title: "Extension"
+        desc: "The user navigates; the domain is captured from the active tab and sent to POST /analyze."
+      - title: "Cloudflare Worker"
+        desc: "Heuristics (brand, TLD, entropy), then Workers AI with Llama 3.1 8B, then weighted community votes."
+      - title: "Workers KV"
+        desc: "Cached verdicts return instantly; new domains are analyzed and stored for 6 hours."
+      - title: "Trust score"
+        desc: "0 to 100. 75–100 trusted, 42–57 caution, 0–21 dangerous."
+
+  - type: "chart"
+    chartType: "bar"
+    title: "Scoring model weights"
+    content: "Brand similarity carries the most weight. A combo override short-circuits the average: digit substitution of a known brand on a high-risk TLD forces a dangerous verdict immediately."
+    yLabel: "Weight (%)"
+    data:
+      - label: "Brand"
+        value: 30
+      - label: "AI verdict"
+        value: 22
+      - label: "TLD risk"
+        value: 18
+      - label: "Entropy"
+        value: 10
+      - label: "Subdomain"
+        value: 10
+      - label: "Chars"
+        value: 5
+      - label: "Length"
+        value: 5
+
+  - type: "text_block"
+    heading: "AI starts it. Humans refine it."
+    content: "Community votes correct AI mistakes, especially on brand-new domains with no threat-feed history."
+    listItems:
+      - "Weighted votes: new users count 1x, 10+ reviews 1.5x, 50+ reviews 2x (capped)."
+      - "The community signal needs 2+ votes before it activates."
+      - "A 60%+ unsafe majority shifts scoring toward higher risk; a 60%+ safe majority with 50%+ confidence shifts it toward lower risk."
+      - "Voting busts the cache, so the next visitor gets a fresh analysis that reflects the new community data."
+
+  - type: "info_grid"
+    heading: "Where this can go"
+    cols: 3
+    items:
+      - icon: "user-check"
+        title: "Human verification for voting"
+        desc: "Proof-of-work before a vote counts, to prevent automated vote stuffing."
+      - icon: "calendar-clock"
+        title: "Domain age signal"
+        desc: "Newly registered domains (under 30 days) are the strongest phishing indicator. Needs WHOIS integration."
+      - icon: "form-input"
+        title: "Credential form detection"
+        desc: "Scan the rendered page for login forms on untrusted domains, catching client-side phishing invisible to the network."
+      - icon: "workflow"
+        title: "Policy engine integration"
+        desc: "Expose the trust score as a policy condition: “if score < 40, isolate in remote browser.”"
+      - icon: "award"
+        title: "Voter reputation"
+        desc: "Track voting accuracy over time. Accurate voters gain weight; outliers lose it."
+      - icon: "lock"
+        title: "Auto-stop credential entry"
+        desc: "Disable input fields on dangerous sites, actively preventing password entry rather than just raising awareness."

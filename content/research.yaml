@@ -1,0 +1,24 @@
+# Research and thesis work, shown as cards in the Research section.
+- name: "Privacy Enhanced Conversational AI using Large Language Models"
+  tag: "Master’s thesis"
+  org: "IIT Kharagpur"
+  description: >-
+    Built a secure local LLM chatbot that ingests custom files to answer queries with 98%
+    accuracy while minimizing data leak risk using encryption and hashing.
+  links:
+    - label: "report"
+      href: "https://drive.google.com/file/d/1H0myea6IzCp5qEo_oHyNaFMoBUyIeNmP/view?usp=drive_link"
+    - label: "certificate"
+      href: "https://drive.google.com/file/d/1R1yZvOhNeaXnkXKn9bjbxKcJWl-HUNQH/view?usp=drive_link"
+
+- name: "Learning Generalized Causal Structure in Time-series"
+  tag: "Research internship"
+  org: "NIAS"
+  description: >-
+    Developed ML models leveraging Fourier Transforms and chaotic maps to detect temporal
+    patterns, achieving 99% accuracy in causality detection across noisy, shifting datasets.
+  links:
+    - label: "paper (arXiv)"
+      href: "https://arxiv.org/pdf/2112.03085"
+    - label: "certificate"
+      href: "https://drive.google.com/file/d/1jv50l347CZGUsFpZ_1sC_L0Tt7qab-kT/view?usp=drive_link"

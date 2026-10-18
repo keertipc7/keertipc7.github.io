@@ -1,0 +1,131 @@
+name: "Keerti Panchakshari Charantimath"
+short_name: "Keerti"
+role: "Product Manager"
+location: "Pittsburgh, PA"
+availability: "Open to product roles"
+
+hero:
+  chips:
+    - "Product Manager"
+    - "Carnegie Mellon ’26"
+    - "Ex-Microsoft"
+  # Rotating taglines. Each highlights the `emphasis` word in bold accent.
+  taglines:
+    - text: "Product manager with an engineer’s toolkit."
+      emphasis: "engineer’s toolkit"
+    - text: "From PRD to working MVP, as the sole PM, engineer, and designer."
+      emphasis: "working MVP"
+    - text: "Building AI products that people can trust."
+      emphasis: "trust"
+  intro: >-
+    Most recently a Product Manager Intern at Cloudflare, where I led the 0-to-1 build of an
+    AI-powered campaign management platform supporting $50M/year in sales operations. Before
+    that, a software engineer at Microsoft. Now finishing a master’s in Integrated Innovation
+    at Carnegie Mellon.
+  spotlight:
+    label: "Live demo"
+    title: "Domain Authenticator"
+    text: >-
+      A Chrome extension that scores every domain you visit for phishing risk, using heuristics,
+      Llama 3.1 on Cloudflare Workers AI, and community votes. Try the scoring engine right here.
+    links:
+      - label: "Try it live"
+        href: "/domain-authenticator/index.html"
+      - label: "Read the case study"
+        href: "/projects/domain-authenticator/"
+
+# The site's arc, shown inside About as links to the matching sections.
+spine:
+  - title: "Ship"
+    target: "experience"
+    text: "Product at Cloudflare and Algozenith. Engineering at Microsoft."
+  - title: "Build"
+    target: "projects"
+    text: "An AI security product, end to end, plus product work at CMU."
+  - title: "Research"
+    target: "research"
+    text: "Privacy-preserving LLMs and causal structure in time series."
+
+about:
+  heading: "About me."
+  paragraphs:
+    - >-
+      I’m a Master’s student in Integrated Innovation for Products & Services at Carnegie
+      Mellon University, with a background in Mathematics and Computing from IIT Kharagpur.
+    - >-
+      Most recently, I interned as a Product Manager at Cloudflare, where I personally built
+      and led the 0-to-1 development of an AI-powered campaign management platform supporting
+      sales operations. I have previously worked as a Software Engineer at Microsoft India,
+      where I honed my expertise in web development. During my undergraduate studies, I gained
+      valuable experience in AI/ML through projects and thesis work, where I applied advanced
+      computational methods to solve real-world problems.
+    - >-
+      I am passionate about building transformative technology solutions that combine my
+      technical depth with product strategy and design thinking. At CMU, I am expanding my
+      skills in innovation and product development to bridge the gap between technology and
+      user-centric solutions.
+  links:
+    - label: "See where I’ve worked"
+      target: "experience"
+    - label: "Explore the projects"
+      target: "projects"
+
+stats:
+  - number: "$50M"
+    label: "Yearly sales ops supported"
+    detail: "Cloudflare · AI platform"
+  - number: "120+"
+    label: "Hours saved weekly"
+    detail: "Microsoft · UI test automation"
+  - number: "23%"
+    label: "Subscription boost"
+    detail: "Microsoft Sustainability"
+  - number: "1%"
+    label: "JEE 2019 rank, top"
+    detail: "Among 1M+ entrants"
+
+# Shown in the Education band. Links go to the certificate or post.
+achievements:
+  - name: "Selected among the top 10 Future STEM Leaders"
+    issuer: "Duolingo"
+    href: "https://www.instagram.com/p/DNTIsRgxScp/?img_index=2"
+  - name: "Awarded a fellowship by India’s top 3 science institutes"
+    issuer: "Fellowship"
+    href: "https://drive.google.com/file/d/1rPNOJp4hyk1e_-aZ4Ix2BkK_2LnW7K3q/view?usp=sharing"
+  - name: "Top 1% among 1600+ students, earning a department change"
+    issuer: "IIT Kharagpur"
+    href: "https://drive.google.com/file/d/1J8m28iZ14zGGl8maRSBuH7GjYj37yh2O/view?usp=sharing"
+  - name: "Top 1% rank in JEE among 1 million+ entrants"
+    issuer: "JEE Mains & Advanced"
+    year: "2019"
+    href: "https://drive.google.com/file/d/1isCaZbipcAUr711IUBMLgsddQfQkdcD-/view?usp=sharing"
+
+education:
+  - school: "Carnegie Mellon University"
+    degree: "Master’s in Integrated Innovation for Products & Services"
+    year: "2025 – 2026"
+    detail: "Coursework: Design of AI Products, User Research"
+  - school: "IIT Kharagpur"
+    degree: "B.Sc + M.Sc (Dual Degree) in Mathematics and Computing"
+    year: "2019 – 2024"
+    detail: "GPA: 9.17/10"
+
+skills:
+  - group: "Coding languages"
+    items: ["C/C++", "C#", "Python", "JavaScript", "TypeScript", "HTML", "CSS", "MATLAB", "LaTeX"]
+  - group: "Technical"
+    items: ["Machine Learning", "Data Science", "Optimization", "System Design"]
+  - group: "Tools"
+    items: ["Figma", "Google Analytics", "Microsoft Excel", "Git", "AI Tools", "ReactJS", "Microsoft Power Platform", "Playwright Automation"]
+  - group: "Core competencies"
+    items: ["Problem Solving", "Team Leadership", "Communication", "Critical Thinking", "Adaptability", "Time Management", "Mentoring", "Strategic Planning"]
+
+contact:
+  resume: "https://drive.google.com/file/d/1vtYXCa-LS1ghXj-UDUXJZ4qwqlwUckAq/view?usp=drive_link"
+  heading: "Let’s connect. Say hello."
+  pitch: >-
+    Recruiter, founder, or just curious about one of the projects: send a note and it lands
+    in my inbox.
+  email: "kcharant@andrew.cmu.edu"
+  linkedin: "https://linkedin.com/in/keerti-charantimath/"
+  github: "https://github.com/keertipc7"

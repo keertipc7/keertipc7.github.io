@@ -1,0 +1,40 @@
+company: "Microsoft"
+title: "Software Engineer Intern"
+industry: "Sustainability Cloud"
+period: "May 2023 – Jun 2023"
+location: "India · Internship"
+short_description: "Built the **“What-if Analysis” feature** in Microsoft Sustainability Manager, letting firms compare their emissions with greener alternatives. Automated computations that cut 75% of manual work for 540+ companies, and earned a return full-time offer."
+logo: "🪟"
+
+key_impact:
+  - value: "75%"
+    label: "Manual work removed"
+  - value: "540+"
+    label: "Companies served"
+  - value: "1"
+    label: "Return full-time offer"
+
+skills:
+  - ReactJS
+  - Dashboards
+  - APIs
+  - Microservices
+
+links:
+  - label: "View certificate"
+    href: "https://drive.google.com/file/d/1VME2oxBb3Ah-UTPrLyXzOodvYzqWi4N3/view?usp=sharing"
+
+overview: |-
+  As an intern I contributed to the Microsoft Sustainability Manager app by developing an impactful feature: “What-if Analysis”, which lets firms compare their emissions with greener alternatives.
+
+  I received a return full-time offer for exemplary contribution to the project.
+
+sections:
+  - type: "text_block"
+    heading: "What I Did"
+    listItems:
+      - "Built the “What-if Analysis” feature, enabling firms to compare their emissions with greener alternatives."
+      - "Automated computations that reduced 75% of manual work for more than 540 companies."
+      - "Created interactive dashboards with ReactJS for better data visualization and decision making."
+      - "Integrated the front end with back-end microservices and the database using custom API-based plugins."
+      - "Received a return full-time offer for exemplary contribution to the project."

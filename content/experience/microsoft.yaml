@@ -1,0 +1,56 @@
+company: "Microsoft"
+title: "Software Engineer"
+industry: "Sustainability Cloud"
+period: "Jul 2024 – Aug 2025"
+location: "India · Full-time"
+short_description: "Designed, engineered, and maintained cloud-based Microsoft Sustainability solutions. Designed navigation for a new free offering that **boosted subscriptions by 23%** and automated UI testing to save 120+ hours of manual effort every week."
+logo: "🪟"
+
+key_impact:
+  - value: "23%"
+    label: "Subscription boost (core app)"
+  - value: "120+"
+    label: "Manual hours saved weekly"
+  - value: "56"
+    label: "UI elements made more accessible"
+
+skills:
+  - Web Development
+  - ReactJS
+  - Playwright Automation
+  - Accessibility
+  - Microsoft Power Platform
+
+overview: |-
+  I returned to Microsoft full-time after my internship, designing, engineering, and maintaining cloud-based Microsoft Sustainability solutions.
+
+  My work spanned test automation, accessibility, navigation design for a new free offering, plugin integrations between the front end and the database, and the technical documentation that onboarded customers onto a new product.
+
+sections:
+  - type: "highlight_box"
+    heading: "Core Responsibility"
+    content: "Design, engineer, and maintain cloud-based Microsoft Sustainability solutions."
+
+  - type: "grid_stats"
+    items:
+      - value: "30+"
+        label: "Automated UI tests"
+        desc: "Saving 120+ manual hours a week"
+      - value: "56"
+        label: "UI elements"
+        desc: "Better keyboard and screen-reader support"
+      - value: "23%"
+        label: "Subscription boost"
+        desc: "From navigation for a new free offering"
+      - value: "20+"
+        label: "Plugins enhanced"
+        desc: "Front end to database integration"
+
+  - type: "text_block"
+    heading: "What I Did"
+    listItems:
+      - "Automated UI testing through 30+ tests, saving manual weekly efforts of more than 120 hours."
+      - "Improved accessibility for 56 UI elements with better keyboard navigation and screen-reader support."
+      - "Designed navigation for a new free offering, boosting subscriptions by 23% for the core Sustainability app."
+      - "Enhanced more than 20 plugins, improving the integration between the front-end elements and the database."
+      - "Authored technical reports and documentation to streamline the onboarding of customers for a new product."

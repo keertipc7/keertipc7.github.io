@@ -1,0 +1,15 @@
+title: "Duolingo Case Study"
+category: "Product Case Study"
+tagline: "Finding the motivation and engagement gaps in Duolingo’s user journey."
+image: "🦉"
+heroImage: "/images/Duolingo_CaseStudy_Thumbnail.png"
+stats:
+  course: "Self project"
+links:
+  - label: "Read the report"
+    href: "https://drive.google.com/file/d/1n0jdHLYHw_9_-mK7ZSFcW7HZfe1KttX0/view?usp=drive_link"
+
+sections:
+  - type: "text_block"
+    heading: "The Analysis"
+    content: "Analyzed Duolingo’s user journey, uncovering motivation and engagement gaps in the user experience, and proposed strategic feature redesigns to improve retention and subscriber conversions."

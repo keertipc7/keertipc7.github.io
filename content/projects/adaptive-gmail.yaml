@@ -1,0 +1,15 @@
+title: "Adaptive Gmail Scheduling"
+category: "AI Product Design"
+tagline: "An adaptive Gmail interface that automates group meeting scheduling."
+image: "📅"
+heroImage: "/images/DIAP_Project_Thumbnail.png"
+stats:
+  course: "Carnegie Mellon"
+links:
+  - label: "Read the report"
+    href: "https://drive.google.com/file/d/1cfWlw-xGLZg7EX4okc4jyWK9bEtWRxL2/view"
+
+sections:
+  - type: "text_block"
+    heading: "The Idea"
+    content: "Ideated an AI-driven adaptive Gmail interface that automates group meeting scheduling by detecting intent and suggesting optimal times based on contextual user data."

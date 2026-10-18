@@ -1,0 +1,44 @@
+company: "Algozenith"
+title: "Product Management Intern"
+industry: "Ed-tech"
+period: "May 2024 – Jul 2024"
+location: "Internship"
+short_description: "Enhanced Algozenith’s ed-tech platform to improve the user journey for 1200+ students. **Introduced the leaderboard and question bank features** and raised user satisfaction to 78%."
+logo: "🎓"
+
+key_impact:
+  - value: "1200+"
+    label: "Students on the platform"
+  - value: "78%"
+    label: "User satisfaction"
+  - value: "1.5x"
+    label: "Faster time-to-market"
+
+skills:
+  - User Journeys
+  - Feature Design
+  - Agile
+  - Engagement & Retention
+
+links:
+  - label: "View certificate"
+    href: "https://drive.google.com/file/d/1FKcIsiF4hoXTOIPo7bqDw2gCek357XGi/view?usp=sharing"
+
+overview: |-
+  At Algozenith Technologies I worked on the company’s ed-tech platform, improving the user journey for 1200+ students.
+
+  I improved platform navigation and user workflows, introduced the leaderboard and question bank features to drive engagement and retention, and brought agile techniques into the development lifecycle.
+
+sections:
+  - type: "highlight_box"
+    heading: "Core Responsibility"
+    content: "Improve the user journey on Algozenith’s ed-tech platform for 1200+ students."
+
+  - type: "text_block"
+    heading: "What I Did"
+    listItems:
+      - "Enhanced Algozenith’s ed-tech platform to improve the user journey for 1200+ students."
+      - "Improved platform navigation and user workflows, resulting in increased user satisfaction to 78%."
+      - "Introduced the leaderboard and question bank features, driving an increase in user engagement and retention."
+      - "Streamlined the development lifecycle by implementing agile techniques, reducing time-to-market by 1.5 times."
+      - "Collaborated with developers and designers to align features with user needs and business goals."

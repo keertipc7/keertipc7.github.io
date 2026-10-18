@@ -1,0 +1,74 @@
+company: "Cloudflare"
+title: "Product Manager Intern"
+industry: "Cloud & Security"
+period: "May 2026 – Aug 2026"
+location: "Austin, TX · 12-week internship"
+short_description: "Led product discovery and **0-to-1 development** of an AI-powered campaign management platform supporting $50M/year in sales operations, as the sole PM, engineer, and designer."
+logo: "☁️"
+
+key_impact:
+  - value: "$50M"
+    label: "Yearly sales operations supported"
+  - value: "34%"
+    label: "Projected faster campaign execution"
+  - value: "$5.1M"
+    label: "Projected annual revenue added"
+
+skills:
+  - Product Discovery
+  - 0-to-1
+  - User Interviews
+  - PRDs
+  - AI Prototyping
+  - Claude AI
+
+links:
+  - label: "Watch my day-in-the-life video"
+    href: "https://www.linkedin.com/feed/update/urn:li:activity:7492170682642874368/"
+
+overview: |-
+  At Cloudflare I led product discovery and 0-to-1 development of Campaign Manager, an internal tool that brings the fragmented information sales teams use to run campaigns into one place. It was also my move from software engineering into product management.
+
+  I defined and designed an AI-powered campaign management tool supporting $50M/year in sales operations. I collected insights through competitive benchmarking and 18 user interviews, and translated the pain points into a PRD. The research started as two smaller tools; the interviews narrowed it to one more impactful solution. Then I built the MVP rapidly with Claude AI and improved it using stakeholder input, serving as the sole PM, engineer, and designer.
+
+sections:
+  - type: "highlight_box"
+    heading: "Core Responsibility"
+    content: "Take an AI-powered sales campaign management platform from discovery to a working MVP, as the only PM, engineer, and designer on it."
+
+  - type: "grid_stats"
+    items:
+      - value: "18"
+        label: "User interviews"
+        desc: "Plus competitive benchmarking"
+      - value: "34%"
+        label: "Faster campaign execution"
+        desc: "Projected, via automation"
+      - value: "11%"
+        label: "Conversion lift"
+        desc: "Projected, via automation"
+      - value: "$5.1M"
+        label: "Annual revenue"
+        desc: "Projected addition"
+
+  - type: "text_block"
+    heading: "What I Did"
+    listItems:
+      - "Led product discovery and 0-to-1 development of an intelligent sales campaign management platform."
+      - "Defined and designed an AI-powered campaign management tool supporting $50M/year in sales operations."
+      - "Collected insights via competitive benchmarking and 18 user interviews, translating pain points into a PRD."
+      - "Built the MVP rapidly with Claude AI and improved it using stakeholder input, serving as the sole PM, engineer, and designer."
+      - "Projected 34% faster campaign execution and 11% conversion lift via automation, adding $5.1M in annual revenue."
+
+  - type: "text_block"
+    heading: "What I Took Away"
+    listItems:
+      - "Understand users before deciding what to build."
+      - "Stay flexible as priorities change."
+      - "Balance user needs, business requirements, and engineering constraints."
+
+  - type: "video_embed"
+    heading: "A Day in the Life"
+    image: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7492170682642874368"
+    caption: "My reflection on the internship, shared on LinkedIn."
+    content: "https://www.linkedin.com/feed/update/urn:li:activity:7492170682642874368/"

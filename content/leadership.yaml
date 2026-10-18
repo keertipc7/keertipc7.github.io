@@ -1,0 +1,39 @@
+# Leadership and volunteering, shown as cards in the Leadership section.
+- name: "Volunteer Teacher"
+  tag: "Teaching"
+  org: "Build Rural Artificial Intelligence Network, eVidyaloka Trust"
+  description: >-
+    Dedicated 10+ hours weekly to teach AI and future-ready technology skills to 25 rural
+    students of class 8.
+  links:
+    - label: "certificate"
+      href: "https://drive.google.com/file/d/16TCC-qmyvw8PcLYBnx7T86XbONCY1RpL/view?usp=sharing"
+
+- name: "Design Intern"
+  tag: "Volunteering"
+  org: "Gopali Youth Welfare Society, Kharagpur"
+  description: >-
+    Transformed the Society’s free hostels with hand-painted murals, brightening the living
+    spaces of 60+ underprivileged kids.
+  links:
+    - label: "certificate"
+      href: "https://drive.google.com/file/d/1PWVTw01fo_Q85ZHxy_gacuJtQNkdzaR-/view?usp=sharing"
+
+- name: "Fine-Arts Cup Captain"
+  tag: "Leadership"
+  org: "SN/IG Hall of Residence, IIT Kharagpur"
+  description: >-
+    Led a 15+ member team to win 1st place in the Fine-Arts Cup.
+  links:
+    - label: "certificate"
+      href: "https://drive.google.com/file/d/17jwYDrxvBAFLrlC2LqgTacA4OvjhcDGd/view?usp=sharing"
+
+- name: "Finance and Gymkhana Head"
+  tag: "Leadership"
+  org: "Spectra, Fine-Arts Society, IIT Kharagpur"
+  description: >-
+    Managed a budget of INR 60k+, which was used to conduct 7 interactive art workshops,
+    exhibitions, and competitions.
+  links:
+    - label: "certificate"
+      href: "https://drive.google.com/file/d/1gaZgiLHyDUBm-EVzNPGxC0rQYY2UrwlR/view?usp=sharing"

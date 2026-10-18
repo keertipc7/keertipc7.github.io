@@ -1,0 +1,15 @@
+title: "Mothers’ Wellness"
+category: "UX Research"
+tagline: "Exploring mothers’ wellness via home workouts."
+image: "🧘"
+heroImage: "/images/UXR_Project_Thumbnail.png"
+stats:
+  course: "Carnegie Mellon"
+links:
+  - label: "Read the report"
+    href: "https://drive.google.com/file/d/1qCjZf-CQ4dbK6Q4BG8VbEfXmZG7lFPtC/view"
+
+sections:
+  - type: "text_block"
+    heading: "The Research"
+    content: "Conducted mixed-method UX research uncovering key insights to support mothers’ wellness, highlighting opportunities for guilt-free self-care and adaptive home workouts."
