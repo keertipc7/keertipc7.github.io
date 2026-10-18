@@ -2,6 +2,7 @@ import React from 'react';
 import { Section } from '@/lib/types';
 import ChartBlock from './ChartBlock';
 import VideoEmbed from './VideoEmbed';
+import DomainChecker from './DomainChecker';
 import { withBase } from '@/lib/basePath';
 import * as LucideIcons from 'lucide-react';
 
@@ -244,6 +245,46 @@ export default function BlockRenderer({ sections }: BlockProps) {
                                 )}
                                 <VideoEmbed embed={section.image ?? ''} link={section.content} caption={section.caption}
                                     title={section.heading} className="max-w-[560px]" />
+                            </section>
+                        );
+
+                    // Photo grid: items are { image, caption, position? }; position is the crop focus.
+                    case 'gallery':
+                        return (
+                            <section key={index} id={section.id} className={WRAP}>
+                                {section.heading && (
+                                    <h3 className="font-serif font-semibold text-2xl md:text-3xl tracking-tight mb-8">{section.heading}</h3>
+                                )}
+                                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                                    {section.items?.map((item: { image: string; caption?: string; position?: string }, i: number) => (
+                                        <figure key={i}>
+                                            <img src={withBase(item.image)} alt={item.caption ?? ''} loading="lazy"
+                                                style={{ objectPosition: item.position ?? 'center' }}
+                                                className="w-full aspect-[4/3] object-cover rounded-xl border border-line" />
+                                            {item.caption && (
+                                                <figcaption className="font-mono text-[11px] text-muted mt-2 leading-relaxed">{item.caption}</figcaption>
+                                            )}
+                                        </figure>
+                                    ))}
+                                </div>
+                            </section>
+                        );
+
+                    // The live Domain Authenticator scoring engine, embedded in the page.
+                    case 'domain_checker':
+                        return (
+                            <section key={index} id={section.id} className={`${WRAP} scroll-mt-24`}>
+                                <div className="border border-line rounded-xl bg-paper p-6 md:p-8">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <span className="w-2 h-2 rounded-full bg-accent animate-pulse motion-reduce:animate-none" />
+                                        <Label>Live</Label>
+                                    </div>
+                                    {section.heading && (
+                                        <h3 className="font-serif font-semibold text-2xl md:text-3xl tracking-tight">{section.heading}</h3>
+                                    )}
+                                    {section.content && <p className="text-[16px] text-muted leading-relaxed mt-2 max-w-[70ch]">{section.content}</p>}
+                                    {section.api && <DomainChecker api={section.api} examples={section.examples ?? []} />}
+                                </div>
                             </section>
                         );
 

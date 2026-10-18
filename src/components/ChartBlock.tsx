@@ -15,6 +15,8 @@ type ChartSection = {
     color?: string;
     data: Record<string, any>[];
     legend?: string[];
+    // Suffix for values in the grouped-bar tooltip (default "%").
+    unit?: string;
 };
 
 const COLORS = {
@@ -52,7 +54,7 @@ function CustomTooltipBar({ active, payload, label }: any) {
     );
 }
 
-function CustomTooltipGrouped({ active, payload, label }: any) {
+function CustomTooltipGrouped({ active, payload, label, unit = '%' }: any) {
     if (!active || !payload?.length) return null;
     const before = payload.find((p: any) => p.dataKey === 'before');
     const after = payload.find((p: any) => p.dataKey === 'after');
@@ -64,12 +66,12 @@ function CustomTooltipGrouped({ active, payload, label }: any) {
                 <div key={i} className="flex items-center gap-2 mt-1">
                     <span className="w-2.5 h-2.5 rounded-full" style={{ background: entry.fill || entry.color }} />
                     <span className="text-[15px] text-muted">{entry.name}:</span>
-                    <span className="text-[15px] font-semibold text-ink">{entry.value}%</span>
+                    <span className="text-[15px] font-semibold text-ink">{entry.value}{unit}</span>
                 </div>
             ))}
             {change !== null && (
                 <div className="mt-2 pt-2 border-t border-line text-[15px] font-medium" style={{ color: change >= 0 ? '#16a34a' : '#dc2626' }}>
-                    {change >= 0 ? '+' : ''}{change}% change
+                    {change >= 0 ? '+' : ''}{Math.round(change * 10) / 10}{unit} change
                 </div>
             )}
         </div>
@@ -159,7 +161,7 @@ export default function ChartBlock({ section }: { section: ChartSection }) {
                             <CartesianGrid strokeDasharray="3 3" stroke={COLORS.gridLine} vertical={false} />
                             <XAxis dataKey="label" {...commonAxisProps} />
                             <YAxis {...commonAxisProps} />
-                            <Tooltip content={<CustomTooltipGrouped />} cursor={{ fill: 'rgba(46, 74, 133, 0.06)' }} />
+                            <Tooltip content={<CustomTooltipGrouped unit={section.unit ?? '%'} />} cursor={{ fill: 'rgba(46, 74, 133, 0.06)' }} />
                             <Legend
                                 wrapperStyle={{ fontSize: '13px', fontWeight: 500, paddingTop: '12px' }}
                             />

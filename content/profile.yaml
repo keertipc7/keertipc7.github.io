@@ -102,6 +102,28 @@ achievements:
     year: "2019"
     href: "https://drive.google.com/file/d/1isCaZbipcAUr711IUBMLgsddQfQkdcD-/view?usp=sharing"
 
+# Photos for the homepage "Moments" section. `position` sets the crop focus.
+moments:
+  - image: "/images/cloudflare/lobby.jpg"
+    caption: "First week at Cloudflare, Austin"
+    href: "/experience/cloudflare/"
+    position: "50% 62%"
+  - image: "/images/cloudflare/interns.jpg"
+    caption: "With the Cloudflare crew"
+    href: "/experience/cloudflare/"
+  - image: "/images/cloudflare/internet-wall.jpg"
+    caption: "Helping build a better Internet"
+    href: "/experience/cloudflare/"
+  - image: "/images/microsoft/campus.jpg"
+    caption: "At Microsoft"
+    href: "/experience/microsoft/"
+  - image: "/images/microsoft/team-outing.jpg"
+    caption: "Team outing at Microsoft"
+    href: "/experience/microsoft/"
+  - image: "/images/microsoft/signing-off.jpg"
+    caption: "Signing off from Microsoft"
+    href: "/experience/microsoft/"
+
 education:
   - school: "Carnegie Mellon University"
     degree: "Master’s in Integrated Innovation for Products & Services"

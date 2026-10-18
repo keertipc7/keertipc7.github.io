@@ -70,3 +70,13 @@ sections:
       - "Stay flexible as priorities change."
       - "Balance user needs, business requirements, and engineering constraints."
 
+  - type: "gallery"
+    heading: "From the Summer"
+    items:
+      - image: "/images/cloudflare/lobby.jpg"
+        caption: "First week at Cloudflare in Austin."
+        position: "50% 62%"
+      - image: "/images/cloudflare/internet-wall.jpg"
+        caption: "The “Helping build a better Internet” wall."
+      - image: "/images/cloudflare/interns.jpg"
+        caption: "With the Cloudflare crew."

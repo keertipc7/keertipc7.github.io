@@ -31,12 +31,11 @@ Everything on the site lives in `content/`. No code changes needed for content e
 
 Images go in `public/images/` and are referenced as `/images/<file>`.
 
-## Domain Authenticator demo
+## Domain Authenticator
 
-`public/domain-authenticator/` is a copy of `docs/` from
-[keertipc7/domain-authenticator](https://github.com/keertipc7/domain-authenticator).
-It is served at `/domain-authenticator/` and calls the deployed Cloudflare Worker,
-so it works as-is. Copy the folder again to pick up demo changes.
+The case study (`content/projects/domain-authenticator.yaml`) and the homepage
+hero both embed the live scoring engine (`src/components/DomainChecker.tsx`),
+which calls the deployed Cloudflare Worker. There is no separate demo site.
 
 ## Contact form
 

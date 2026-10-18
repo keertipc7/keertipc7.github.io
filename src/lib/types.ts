@@ -15,10 +15,16 @@ export type SectionType =
   | 'info_grid'
   | 'image_block'
   | 'chart'
-  | 'video_embed';
+  | 'video_embed'
+  | 'domain_checker';
 
 export type Section = {
   type: SectionType;
+  // Optional anchor id, so a link like "#try-it" can jump to the section.
+  id?: string;
+  // domain_checker: the scoring API base URL and example domains to offer.
+  api?: string;
+  examples?: string[];
   heading?: string;
   content?: string;
   image?: string;
@@ -96,6 +102,9 @@ export type Profile = {
   stats: { number: string; label: string; detail: string }[];
   spine: { title: string; target: string; text: string }[];
   achievements: { name: string; issuer: string; year?: string; href: string }[];
+  // Photos for the homepage "Moments" strip; `href` links to the related page.
+  // `position` is a CSS object-position for the crop, e.g. "50% 70%".
+  moments?: { image: string; caption: string; href?: string; position?: string }[];
   education: { school: string; degree: string; year: string; detail?: string }[];
   skills: { group: string; items: string[] }[];
   contact: {

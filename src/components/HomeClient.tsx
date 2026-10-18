@@ -356,7 +356,7 @@ export default function HomeClient({ profile, experiences, projects, research, l
 
                 {/* Right: name, tagline, integrated chat, stats */}
                 <div>
-                    <h1 className="font-serif font-semibold text-5xl md:text-7xl leading-[0.98] tracking-tight mb-4">
+                    <h1 className="font-serif font-semibold text-4xl md:text-[3.5rem] leading-[1.02] tracking-tight mb-4">
                         {profile.name}<span className="text-accent">.</span>
                     </h1>
                     <div className="flex items-center gap-2.5 flex-wrap mb-3">
@@ -526,6 +526,35 @@ export default function HomeClient({ profile, experiences, projects, research, l
                     ))}
                 </div>
             </section>
+
+            {/* MOMENTS: photos from the roles, each linking to its page */}
+            {profile.moments && profile.moments.length > 0 && (
+                <section id="moments" className="max-w-[1120px] mx-auto px-7 pb-16">
+                    <SectionHead label="Along the way" title="Moments from the work."
+                        sub="Offices, teams, and a few goodbyes." />
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-7">
+                        {profile.moments.map((moment) => {
+                            const photo = (
+                                <>
+                                    <span className="block aspect-[4/3] overflow-hidden rounded-xl border border-line bg-inset">
+                                        <img src={withBase(moment.image)} alt={moment.caption} loading="lazy"
+                                            style={{ objectPosition: moment.position ?? 'center' }}
+                                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
+                                    </span>
+                                    <span className="block font-mono text-[11px] text-muted mt-2 leading-snug group-hover:text-accent-ink transition-colors">
+                                        {moment.caption}{moment.href && <span className="text-accent ml-1">→</span>}
+                                    </span>
+                                </>
+                            );
+                            return moment.href ? (
+                                <Link key={moment.image} href={moment.href} data-reveal className="group block">{photo}</Link>
+                            ) : (
+                                <figure key={moment.image} data-reveal className="group">{photo}</figure>
+                            );
+                        })}
+                    </div>
+                </section>
+            )}
 
             {/* PROJECTS */}
             <section id="projects" className="max-w-[1120px] mx-auto px-7 pb-16">

@@ -62,3 +62,18 @@ sections:
       - "Designed navigation for a new free offering, boosting subscriptions by 23% for the core Sustainability app."
       - "Enhanced more than 20 plugins, improving the integration between the front-end elements and the database."
       - "Authored technical reports and documentation to streamline the onboarding of customers for a new product."
+
+  - type: "gallery"
+    heading: "Moments from Microsoft"
+    items:
+      - image: "/images/microsoft/campus.jpg"
+        caption: "At the Microsoft campus."
+      - image: "/images/microsoft/office.jpg"
+        caption: "At the office."
+        position: "50% 72%"
+      - image: "/images/microsoft/team-dinner.jpg"
+        caption: "Team dinner."
+      - image: "/images/microsoft/team-outing.jpg"
+        caption: "Team outing."
+      - image: "/images/microsoft/signing-off.jpg"
+        caption: "Signing off on the last day."
