@@ -3,6 +3,8 @@ category: "Product Case Study"
 tagline: "Finding the motivation and engagement gaps in Duolingo’s user journey."
 image: "🦉"
 heroImage: "/images/Duolingo_CaseStudy_Thumbnail.png"
+featured: true
+featuredBlurb: "A self-directed product teardown of Duolingo’s user journey: where motivation and engagement drop off, and the feature redesigns that would lift retention and subscriber conversions."
 stats:
   course: "Self project"
 links:

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FileText, Github, Linkedin, Menu, X } from 'lucide-react';
 import SiteLogo from '@/components/SiteLogo';
+import DomainChecker from '@/components/DomainChecker';
 import { withBase } from '@/lib/basePath';
 import { Card, Experience, Profile, Project } from '@/lib/types';
 
@@ -218,8 +219,10 @@ export default function HomeClient({ profile, experiences, projects, research, l
         window.location.href = `mailto:${profile.contact.email}?subject=${subject}&body=${body}`;
     };
 
-    /* Web3Forms only accepts browser-side submissions, so the form posts to it directly.
-       Its access key is public by design. Falls back to the email app if the key isn't set. */
+    /* Sends the note through FormSubmit (formsubmit.co), which emails it to the contact
+       address with no account or key. The very first submission ever triggers a one-time
+       "Activate form" email to that inbox; after the link is clicked, every note is delivered.
+       If the send fails for any reason, the visitor's email app opens with the note pre-filled. */
     const submitContact = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
@@ -229,21 +232,6 @@ export default function HomeClient({ profile, experiences, projects, research, l
         const email = String(data.get('email') ?? '');
         const message = String(data.get('message') ?? '');
 
-        const key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-        if (!key) {
-            openMailto(name, email, message);
-            return;
-        }
-
-        // Send as form data (not JSON) so the browser skips the CORS preflight,
-        // matching how Web3Forms' own HTML form submits.
-        data.append('access_key', key);
-        data.append('subject', `Portfolio note from ${name}`);
-        data.append('from_name', `${profile.name} Portfolio`);
-        data.append('replyto', email);
-
-        // If the direct send fails for any reason, open the email app with the note
-        // pre-filled so the message is never lost.
         const fallback = () => {
             openMailto(name, email, message);
             setContactStatus('idle');
@@ -251,9 +239,20 @@ export default function HomeClient({ profile, experiences, projects, research, l
 
         setContactStatus('sending');
         try {
-            const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+            const res = await fetch(`https://formsubmit.co/ajax/${profile.contact.email}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({
+                    name,
+                    email, // FormSubmit uses this field as the reply-to address
+                    message,
+                    _subject: `Portfolio note from ${name}`,
+                    _template: 'table',
+                    _captcha: 'false',
+                }),
+            });
             const result = await res.json().catch(() => null);
-            if (result?.success) {
+            if (String(result?.success) === 'true') {
                 form.reset();
                 setContactStatus('sent');
             } else {
@@ -380,6 +379,9 @@ export default function HomeClient({ profile, experiences, projects, research, l
                             </div>
                             <h3 className="font-serif font-semibold text-xl mt-2.5">{profile.hero.spotlight.title}</h3>
                             <p className="text-[15px] text-muted leading-relaxed mt-1.5">{profile.hero.spotlight.text}</p>
+                            {profile.hero.spotlight.api && (
+                                <DomainChecker api={profile.hero.spotlight.api} examples={profile.hero.spotlight.examples ?? []} />
+                            )}
                             <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4">
                                 {profile.hero.spotlight.links.map((link) => (
                                     <a key={link.href} href={withBase(link.href)} {...linkProps(link.href)}
@@ -530,10 +532,11 @@ export default function HomeClient({ profile, experiences, projects, research, l
                 <SectionHead label="03 · Projects" title="What I’ve built and studied."
                     sub="An AI product I built end to end, plus product design and research work from Carnegie Mellon. Case studies on their own pages." />
 
-                {/* Featured project: full width, but only a step above the rows below */}
+                {/* Featured projects: full width, always visible, only a step above the rows below */}
+                <div className="mt-7 mb-8 space-y-4">
                 {projects.filter((p) => p.featured).map((project) => (
                     <Link key={project.slug} href={`/projects/${project.slug}`} data-reveal
-                        className="block border border-line rounded-xl bg-paper px-6 py-5 md:px-7 mt-7 mb-8 group hover:border-accent/40 hover:bg-accent/[0.03] transition-colors">
+                        className="block border border-line rounded-xl bg-paper px-6 py-5 md:px-7 group hover:border-accent/40 hover:bg-accent/[0.03] transition-colors">
                         <div className="flex items-baseline justify-between gap-4">
                             <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
                                 {project.category}{project.stats?.course && ` · ${project.stats.course}`}
@@ -551,6 +554,7 @@ export default function HomeClient({ profile, experiences, projects, research, l
                         )}
                     </Link>
                 ))}
+                </div>
 
                 <button type="button" onClick={() => setShowMoreProjects(!showMoreProjects)}
                     className="w-full flex items-center gap-2.5 border-t border-ink pt-4 pb-1 font-mono text-[12px] text-accent hover:text-accent-ink transition-colors">

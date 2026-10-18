@@ -3,6 +3,7 @@ import Link from 'next/link';
 import BlockRenderer from '@/components/BlockRenderer';
 import LinkRow from '@/components/LinkRow';
 import SiteLogo from '@/components/SiteLogo';
+import VideoEmbed from '@/components/VideoEmbed';
 
 export async function generateStaticParams() {
     return getExperiences().map((exp) => ({ slug: exp.slug }));
@@ -40,7 +41,9 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
             </nav>
 
             {/* HEADER */}
-            <header className="max-w-[1120px] mx-auto px-7 pt-14 pb-10">
+            {/* With a video, the header splits: story on the left, video on the right. */}
+            <header className={`max-w-[1120px] mx-auto px-7 pt-14 pb-10 ${experience.video ? 'grid lg:grid-cols-[1fr_360px] gap-10 lg:gap-12 items-start' : ''}`}>
+                <div>
                 <div className="flex items-center gap-2.5 flex-wrap mb-5">
                     <span className="w-[22px] h-px bg-accent" />
                     <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">{experience.period}</span>
@@ -76,6 +79,15 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
                             </span>
                         ))}
                     </div>
+                )}
+                </div>
+
+                {experience.video && (
+                    <aside className="lg:sticky lg:top-24">
+                        <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">{experience.video.title ?? 'Video'}</div>
+                        <VideoEmbed embed={experience.video.embed} link={experience.video.link}
+                            caption={experience.video.caption} title={experience.video.title} height={experience.video.height} />
+                    </aside>
                 )}
             </header>
 

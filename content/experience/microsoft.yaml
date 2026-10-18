@@ -21,6 +21,14 @@ skills:
   - Accessibility
   - Microsoft Power Platform
 
+video:
+  title: "Looking back"
+  embed: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7365047142589140992"
+  link: "https://www.linkedin.com/feed/update/urn:li:activity:7365047142589140992/"
+  caption: "My reflection as my time at Microsoft came to an end, shared on LinkedIn. Scroll the post to read it all."
+  # The post is long text; a shorter frame scrolls and keeps the header balanced.
+  height: 600
+
 overview: |-
   I returned to Microsoft full-time after my internship, designing, engineering, and maintaining cloud-based Microsoft Sustainability solutions.
 

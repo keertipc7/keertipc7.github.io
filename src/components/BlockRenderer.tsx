@@ -1,6 +1,7 @@
 import React from 'react';
 import { Section } from '@/lib/types';
 import ChartBlock from './ChartBlock';
+import VideoEmbed from './VideoEmbed';
 import { withBase } from '@/lib/basePath';
 import * as LucideIcons from 'lucide-react';
 
@@ -241,19 +242,8 @@ export default function BlockRenderer({ sections }: BlockProps) {
                                 {section.heading && (
                                     <h3 className="font-serif font-semibold text-2xl md:text-3xl tracking-tight mb-6">{section.heading}</h3>
                                 )}
-                                <div className="max-w-[560px] rounded-xl overflow-hidden border border-line bg-paper">
-                                    <iframe src={section.image} title={section.heading ?? 'Video'} allowFullScreen
-                                        loading="lazy" className="w-full h-[640px] max-h-[80vh]" />
-                                </div>
-                                <p className="font-mono text-[12px] text-muted mt-3">
-                                    {section.caption}{' '}
-                                    {section.content && (
-                                        <a href={section.content} target="_blank" rel="noopener noreferrer"
-                                            className="text-accent border-b border-accent/25 hover:border-accent">
-                                            Open on LinkedIn ↗
-                                        </a>
-                                    )}
-                                </p>
+                                <VideoEmbed embed={section.image ?? ''} link={section.content} caption={section.caption}
+                                    title={section.heading} className="max-w-[560px]" />
                             </section>
                         );
 

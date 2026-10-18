@@ -22,9 +22,12 @@ skills:
   - AI Prototyping
   - Claude AI
 
-links:
-  - label: "Watch my day-in-the-life video"
-    href: "https://www.linkedin.com/feed/update/urn:li:activity:7492170682642874368/"
+video:
+  title: "A day in the life"
+  embed: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7492170682642874368"
+  link: "https://www.linkedin.com/feed/update/urn:li:activity:7492170682642874368/"
+  caption: "My reflection on the internship, shared on LinkedIn."
+  height: 1050
 
 overview: |-
   At Cloudflare I led product discovery and 0-to-1 development of Campaign Manager, an internal tool that brings the fragmented information sales teams use to run campaigns into one place. It was also my move from software engineering into product management.
@@ -67,8 +70,3 @@ sections:
       - "Stay flexible as priorities change."
       - "Balance user needs, business requirements, and engineering constraints."
 
-  - type: "video_embed"
-    heading: "A Day in the Life"
-    image: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7492170682642874368"
-    caption: "My reflection on the internship, shared on LinkedIn."
-    content: "https://www.linkedin.com/feed/update/urn:li:activity:7492170682642874368/"

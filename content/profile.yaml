@@ -27,12 +27,14 @@ hero:
     title: "Domain Authenticator"
     text: >-
       A Chrome extension that scores every domain you visit for phishing risk, using heuristics,
-      Llama 3.1 on Cloudflare Workers AI, and community votes. Try the scoring engine right here.
+      Llama 3.1 on Cloudflare Workers AI, and community votes. Try the live scoring engine right here.
+    api: "https://domain-authenticator.keertipc7.workers.dev"
+    examples: ["github.com", "g00gle.xyz", "paypal-secure.top", "micr0soft-login.buzz"]
     links:
-      - label: "Try it live"
-        href: "/domain-authenticator/index.html"
       - label: "Read the case study"
         href: "/projects/domain-authenticator/"
+      - label: "Get the extension"
+        href: "https://github.com/keertipc7/domain-authenticator#install-the-extension"
 
 # The site's arc, shown inside About as links to the matching sections.
 spine:
@@ -88,7 +90,7 @@ stats:
 achievements:
   - name: "Selected among the top 10 Future STEM Leaders"
     issuer: "Duolingo"
-    href: "https://www.instagram.com/p/DNTIsRgxScp/?img_index=2"
+    href: "https://lnkd.in/p/gN23zMWD"
   - name: "Awarded a fellowship by India’s top 3 science institutes"
     issuer: "Fellowship"
     href: "https://drive.google.com/file/d/1rPNOJp4hyk1e_-aZ4Ix2BkK_2LnW7K3q/view?usp=sharing"
@@ -126,6 +128,6 @@ contact:
   pitch: >-
     Recruiter, founder, or just curious about one of the projects: send a note and it lands
     in my inbox.
-  email: "kcharant@andrew.cmu.edu"
+  email: "keertipc7@gmail.com"
   linkedin: "https://linkedin.com/in/keerti-charantimath/"
   github: "https://github.com/keertipc7"

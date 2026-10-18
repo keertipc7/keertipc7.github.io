@@ -40,8 +40,11 @@ so it works as-is. Copy the folder again to pick up demo changes.
 
 ## Contact form
 
-Set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example`) so the form sends
-email directly; without it, the form opens the visitor's email app.
+The form sends through [FormSubmit](https://formsubmit.co) to the email in
+`content/profile.yaml`; no account or key needed. The first submission ever
+sends a one-time "Activate form" email to that inbox; click it once and every
+note after that is delivered. If sending fails, the visitor's email app opens
+with the note pre-filled.
 
 ## Deploy
 

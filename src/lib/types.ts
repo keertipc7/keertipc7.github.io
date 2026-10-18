@@ -51,6 +51,8 @@ export type Experience = BaseContent & {
   overview?: string;
   key_impact?: { label: string; value: string }[];
   links?: Link[];
+  // Shown beside the header on the detail page (e.g. a LinkedIn video post).
+  video?: { embed: string; link?: string; caption?: string; title?: string; height?: number };
   quote?: string;
 };
 
@@ -83,7 +85,8 @@ export type Profile = {
     taglines: { text: string; emphasis?: string }[];
     intro: string;
     // A highlighted build shown in the hero, linking to its live demo and case study.
-    spotlight?: { label: string; title: string; text: string; links: Link[] };
+    // `api` enables the inline live checker that posts to `${api}/analyze`.
+    spotlight?: { label: string; title: string; text: string; links: Link[]; api?: string; examples?: string[] };
   };
   about: {
     heading: string;
