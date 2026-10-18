@@ -448,6 +448,35 @@ export default function HomeClient({ profile, experiences, projects, research, l
                 </div>
             </section>
 
+            {/* MOMENTS: photos from the roles, each linking to its page */}
+            {profile.moments && profile.moments.length > 0 && (
+                <section id="moments" className="max-w-[1120px] mx-auto px-7 pt-14">
+                    <SectionHead label="Along the way" title="Moments from the work."
+                        sub="Offices, teams, and a few goodbyes." />
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-7">
+                        {profile.moments.map((moment) => {
+                            const photo = (
+                                <>
+                                    <span className="block aspect-[4/3] overflow-hidden rounded-xl border border-line bg-inset">
+                                        <img src={withBase(moment.image)} alt={moment.caption} loading="lazy"
+                                            style={{ objectPosition: moment.position ?? 'center' }}
+                                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
+                                    </span>
+                                    <span className="block font-mono text-[11px] text-muted mt-2 leading-snug group-hover:text-accent-ink transition-colors">
+                                        {moment.caption}{moment.href && <span className="text-accent ml-1">→</span>}
+                                    </span>
+                                </>
+                            );
+                            return moment.href ? (
+                                <Link key={moment.image} href={moment.href} data-reveal className="group block">{photo}</Link>
+                            ) : (
+                                <figure key={moment.image} data-reveal className="group">{photo}</figure>
+                            );
+                        })}
+                    </div>
+                </section>
+            )}
+
             {/* EDUCATION & CERTIFICATIONS */}
             <div className="border-y border-line bg-wash mt-14">
                 <div className="max-w-[1120px] mx-auto px-7 py-8 grid md:grid-cols-[1fr_1.9fr] gap-x-14 gap-y-8">
@@ -526,35 +555,6 @@ export default function HomeClient({ profile, experiences, projects, research, l
                     ))}
                 </div>
             </section>
-
-            {/* MOMENTS: photos from the roles, each linking to its page */}
-            {profile.moments && profile.moments.length > 0 && (
-                <section id="moments" className="max-w-[1120px] mx-auto px-7 pb-16">
-                    <SectionHead label="Along the way" title="Moments from the work."
-                        sub="Offices, teams, and a few goodbyes." />
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-7">
-                        {profile.moments.map((moment) => {
-                            const photo = (
-                                <>
-                                    <span className="block aspect-[4/3] overflow-hidden rounded-xl border border-line bg-inset">
-                                        <img src={withBase(moment.image)} alt={moment.caption} loading="lazy"
-                                            style={{ objectPosition: moment.position ?? 'center' }}
-                                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
-                                    </span>
-                                    <span className="block font-mono text-[11px] text-muted mt-2 leading-snug group-hover:text-accent-ink transition-colors">
-                                        {moment.caption}{moment.href && <span className="text-accent ml-1">→</span>}
-                                    </span>
-                                </>
-                            );
-                            return moment.href ? (
-                                <Link key={moment.image} href={moment.href} data-reveal className="group block">{photo}</Link>
-                            ) : (
-                                <figure key={moment.image} data-reveal className="group">{photo}</figure>
-                            );
-                        })}
-                    </div>
-                </section>
-            )}
 
             {/* PROJECTS */}
             <section id="projects" className="max-w-[1120px] mx-auto px-7 pb-16">
